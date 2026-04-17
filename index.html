@@ -147,7 +147,8 @@
       inset: 0;
       background-image: url('./photos/mainbanner.png');
       background-size: cover;
-      background-position: center;
+      background-position: center center;
+      background-repeat: no-repeat;
       opacity: 0.7;
     }
 
@@ -798,6 +799,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center center;
       display: block;
       transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
     }
@@ -1911,6 +1913,10 @@
         height: auto !important;
       }
 
+      .gallery-item {
+        width: 100%;
+      }
+
       .biz-cat-top {
         padding: 36px 30px 28px;
       }
@@ -1934,6 +1940,7 @@
 
       .gallery-item {
         height: 350px;
+        width: 100%;
       }
 
       .wmodal-box {
@@ -2147,6 +2154,8 @@
 
       .gallery-item {
         height: 250px;
+        width: 100%;
+        flex-shrink: 0;
       }
 
       .g-label {
@@ -2173,7 +2182,9 @@
       }
 
       .ceo-photo-wrap img {
-        aspect-ratio: 4/3;
+        aspect-ratio: 3/4;
+        max-height: 400px;
+        margin: 0 auto;
       }
 
       .ceo-section::before {
@@ -2281,7 +2292,43 @@
       .training-photos {
         margin-right: 0;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 180px 160px 160px 160px;
+        grid-template-rows: 200px 200px 200px 200px;
+      }
+
+      /* Reset grid positions: no spanning on mobile */
+      .training-photo-main {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .training-photo-sub {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      .training-photo-accent {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .training-photo-mini {
+        grid-column: 2;
+        grid-row: 2;
+      }
+
+      .training-photo-mini2 {
+        grid-column: 1;
+        grid-row: 3;
+      }
+
+      .training-photo-extra1 {
+        grid-column: 2;
+        grid-row: 3;
+      }
+
+      .training-photo-extra2 {
+        grid-column: 1 / -1;
+        grid-row: 4;
       }
 
       .training-red-bar {
@@ -2568,7 +2615,7 @@
       }
 
       .carousel-img {
-        height: 260px;
+        height: 300px;
       }
 
       .carousel-name {
@@ -2759,21 +2806,21 @@
     </div>
     <div class="gallery-full reveal">
       <div class="gallery-item">
-        <img src="./facility_photos/sub2.png">
+        <img src="./facility_photos/sub2.png" alt="LOBBY" loading="lazy">
         <div class="g-label">
           <span class="g-loc">GINZA / 01</span>
           <h3 class="g-title">LOBBY</h3>
         </div>
       </div>
       <div class="gallery-item">
-        <img src="./facility_photos/office2.png">
+        <img src="./facility_photos/office2.png" alt="CREATIVE SPACE" loading="lazy">
         <div class="g-label">
           <span class="g-loc">GINZA / 02</span>
           <h3 class="g-title">CREATIVE SPACE</h3>
         </div>
       </div>
       <div class="gallery-item">
-        <img src="./facility_photos/office5.png">
+        <img src="./facility_photos/office5.png" alt="RELAXING SPACE" loading="lazy">
         <div class="g-label">
           <span class="g-loc">GINZA / 03</span>
           <h3 class="g-title">RELAXING SPACE</h3>
@@ -2917,25 +2964,25 @@
         <!-- 右: フォトモザイク -->
         <div class="training-photos">
           <div class="training-photo-main">
-            <img src="./trial_photos/IMG_1899.JPG" alt="研修風景">
+            <img src="./trial_photos/IMG_1899.JPG" alt="研修風景" loading="lazy">
           </div>
           <div class="training-photo-sub">
-            <img src="./trial_photos/IMG_0983.jpg" alt="オフィス風景">
+            <img src="./trial_photos/IMG_0983.jpg" alt="オフィス風景" loading="lazy">
           </div>
           <div class="training-photo-accent">
-            <img src="./trial_photos/IMG_1509.JPG" alt="チーム">
+            <img src="./trial_photos/IMG_1509.JPG" alt="チーム" loading="lazy">
           </div>
           <div class="training-photo-mini">
-            <img src="./trial_photos/L1000654.jpg" alt="研修風景">
+            <img src="./trial_photos/L1000654.jpg" alt="研修風景" loading="lazy">
           </div>
           <div class="training-photo-mini2">
-            <img src="./trial_photos/screenshot-office.png" alt="チーム">
+            <img src="./trial_photos/screenshot-office.png" alt="チーム" loading="lazy">
           </div>
           <div class="training-photo-extra1">
-            <img src="./trial_photos/office-scene.jpg" alt="オフィス風景">
+            <img src="./trial_photos/office-scene.jpg" alt="オフィス風景" loading="lazy">
           </div>
           <div class="training-photo-extra2">
-            <img src="./trial_photos/team-all.jpeg" alt="チーム全体">
+            <img src="./trial_photos/team-all.jpeg" alt="チーム全体" loading="lazy">
           </div>
         </div>
 
@@ -3089,7 +3136,7 @@
     <div class="container reveal">
       <div class="ceo-inner">
         <div class="ceo-photo-wrap">
-          <img src="./ceo_photo/IMG_2072.JPG" alt="代表取締役 中野">
+          <img src="./ceo_photo/IMG_2072.JPG" alt="代表取締役 中野" loading="lazy">
         </div>
         <div class="ceo-content">
           <span class="ceo-tag">President's Message</span>
