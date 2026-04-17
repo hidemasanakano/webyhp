@@ -108,6 +108,11 @@
       height: 28px;
     }
 
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
     nav a {
       text-decoration: none;
       font-family: var(--font-en);
@@ -128,6 +133,7 @@
     /* --- Hero --- */
     .hero {
       height: 100vh;
+      height: 100dvh;
       background: #000;
       display: flex;
       align-items: center;
@@ -1528,6 +1534,7 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
       transition: 0.3s;
       position: relative;
+      height: 220px;
     }
 
     .jb-card:hover {
@@ -1537,7 +1544,8 @@
 
     .jb-card img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
       display: block;
     }
 
@@ -1864,6 +1872,20 @@
     }
 
     @media (max-width: 1024px) {
+      header {
+        padding: 0 30px;
+        height: 80px;
+      }
+
+      header.scrolled {
+        height: 70px;
+      }
+
+      nav a {
+        margin-left: 30px;
+        font-size: 0.7rem;
+      }
+
       .hero-h1,
       .m-copy {
         font-size: 3rem;
@@ -1997,9 +2019,11 @@
         width: 80%;
         max-width: 320px;
         height: 100vh;
+        height: 100dvh;
         background: rgba(0, 0, 0, 0.97);
         backdrop-filter: blur(20px);
         flex-direction: column;
+        align-items: flex-start;
         padding: 100px 40px 40px;
         transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         z-index: 999;
@@ -2423,6 +2447,10 @@
       .jb-grid {
         grid-template-columns: 1fr;
         gap: 16px;
+      }
+
+      .jb-card {
+        height: 180px;
       }
 
       /* --- Footer --- */
