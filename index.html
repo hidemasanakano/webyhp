@@ -147,6 +147,190 @@
       position: relative;
     }
 
+    /* --- Hero Stats Strip (CRO: trust signals above fold) --- */
+    .hero-stats {
+      background: #fff;
+      border-bottom: 1px solid var(--line-gray);
+      padding: 28px 0;
+    }
+    .hero-stats-inner {
+      max-width: 1260px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      align-items: center;
+    }
+    .hero-stat {
+      text-align: center;
+      border-right: 1px solid var(--line-gray);
+      padding: 4px 8px;
+    }
+    .hero-stat:last-child {
+      border-right: none;
+    }
+    .hero-stat-label {
+      font-family: var(--font-en);
+      font-size: 0.65rem;
+      font-weight: 900;
+      letter-spacing: 0.3em;
+      color: var(--weby-red);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .hero-stat-value {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #111;
+      line-height: 1.3;
+    }
+    .hero-stat-value em {
+      font-family: var(--font-en);
+      font-size: 1.6rem;
+      font-style: normal;
+      color: var(--weby-red);
+    }
+    @media (max-width: 768px) {
+      .hero-stats {
+        padding: 18px 0;
+      }
+      .hero-stats-inner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px 10px;
+        padding: 0 16px;
+      }
+      .hero-stat {
+        border-right: none;
+        border-bottom: 1px solid var(--line-gray);
+        padding-bottom: 14px;
+      }
+      .hero-stat:nth-last-child(-n+2) {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .hero-stat:last-child {
+        grid-column: 1 / 3;
+      }
+      .hero-stat-value {
+        font-size: 1rem;
+      }
+      .hero-stat-value em {
+        font-size: 1.35rem;
+      }
+    }
+
+    /* --- Post-Recruit CTA (CRO: highest-intent direct entry) --- */
+    .recruit-cta {
+      background: #0d0d0d;
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .recruit-cta::before {
+      content: 'ENTRY';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-en);
+      font-size: 22vw;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.03);
+      letter-spacing: -0.02em;
+      pointer-events: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .recruit-cta-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .recruit-cta-tag {
+      font-family: var(--font-en);
+      color: var(--weby-red);
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: 0.4em;
+      display: block;
+      margin-bottom: 24px;
+    }
+    .recruit-cta-heading {
+      font-family: var(--font-serif);
+      color: #fff;
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+    .recruit-cta-heading em {
+      color: var(--weby-red);
+      font-style: normal;
+    }
+    .recruit-cta-lead {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1rem;
+      line-height: 1.9;
+      margin-bottom: 40px;
+    }
+    .recruit-cta-lead strong {
+      color: #fff;
+      font-weight: 700;
+    }
+    .recruit-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--weby-red);
+      color: #fff;
+      font-family: var(--font-en);
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: 0.3em;
+      padding: 22px 64px;
+      text-decoration: none;
+      text-transform: uppercase;
+      border-radius: 2px;
+      box-shadow: 0 8px 30px rgba(192, 20, 60, 0.35);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .recruit-cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(192, 20, 60, 0.5);
+    }
+    .recruit-cta-arrow {
+      transition: transform 0.3s;
+    }
+    .recruit-cta-btn:hover .recruit-cta-arrow {
+      transform: translateX(4px);
+    }
+    .recruit-cta-sub {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      margin-top: 20px;
+    }
+    .sp-br { display: none; }
+    @media (max-width: 768px) {
+      .recruit-cta {
+        padding: 70px 0;
+      }
+      .recruit-cta-heading {
+        font-size: 1.7rem;
+      }
+      .recruit-cta-btn {
+        padding: 18px 48px;
+        font-size: 0.95rem;
+      }
+      .sp-br { display: inline; }
+    }
+
     /* --- Brand Header (Pristine Transparency) --- */
     header {
       position: fixed;
@@ -182,7 +366,7 @@
     }
 
     .logo img {
-      height: 40px;
+      height: 48px;
       width: auto;
       display: block;
     }
@@ -2119,7 +2303,7 @@
       }
 
       .logo img {
-        height: 22px;
+        height: 32px;
       }
 
       /* --- Container --- */
@@ -2916,6 +3100,32 @@
     </div>
   </section>
 
+  <!-- Hero Stats Strip (CRO: trust signals above fold) -->
+  <section class="hero-stats" aria-label="会社概要サマリー">
+    <div class="hero-stats-inner reveal">
+      <div class="hero-stat">
+        <span class="hero-stat-label">FOUNDED</span>
+        <div class="hero-stat-value"><em>2011</em>年設立</div>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-label">LOCATION</span>
+        <div class="hero-stat-value">東京・<em>銀座</em>本社</div>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-label">SALARY</span>
+        <div class="hero-stat-value">初年度 <em>350</em>万〜</div>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-label">HOLIDAYS</span>
+        <div class="hero-stat-value">年間 <em>120</em>日・完全週休2日</div>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-label">APPLY</span>
+        <div class="hero-stat-value">スマホで <em>約3分</em></div>
+      </div>
+    </div>
+  </section>
+
   <!-- News Bar -->
   <div class="news-bar">
     <div class="news-bar-inner">
@@ -3377,6 +3587,19 @@
           <div class="r-data">〒104-0051 東京都中央区佃二丁目1番6号 株式会社WEBY　人材開発本部　採用担当　TEL：03-6280-4361　EMAIL：recruit@weby-inc.com</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Post-Recruit Direct CTA (CRO: capture highest intent moment) -->
+  <section class="recruit-cta" aria-label="応募">
+    <div class="recruit-cta-inner reveal">
+      <span class="recruit-cta-tag">READY TO JOIN</span>
+      <h2 class="recruit-cta-heading">今日より明日を、<em>ジブンの手で</em>変える。</h2>
+      <p class="recruit-cta-lead">WEBYの採用へ、直接エントリー。<br class="sp-br">スマホで<strong>約3分</strong>、質問3項目のシンプル応募フォームです。</p>
+      <a class="recruit-cta-btn" href="https://weby.app.n8n.cloud/form/325613fd-51ee-44e1-ae64-b751ae7623e2" target="_blank" rel="noopener noreferrer">
+        ENTRY <span class="recruit-cta-arrow" aria-hidden="true">→</span>
+      </a>
+      <p class="recruit-cta-sub">※ 別タブで応募フォームが開きます</p>
     </div>
   </section>
 
