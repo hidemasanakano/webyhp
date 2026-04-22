@@ -1,0 +1,49 @@
+name: A11y (axe-core)
+
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - '.github/workflows/a11y.yml'
+  push:
+    branches: [main]
+
+jobs:
+  axe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install @axe-core/cli and http-server
+        run: |
+          npm install -g @axe-core/cli http-server
+
+      - name: Start local server
+        run: |
+          http-server . -p 8080 -s &
+          sleep 3
+
+      - name: Run axe
+        # Run axe against the page and emit JSON report
+        # Initial run: report violations but do not fail (allow ramp-up).
+        # Flip continue-on-error to false once the backlog is clean.
+        continue-on-error: true
+        run: |
+          axe http://localhost:8080 \
+            --tags wcag2a,wcag2aa,wcag21a,wcag21aa \
+            --save axe-report.json \
+            --exit
+        env:
+          # Headless Chrome
+          CI: true
+
+      - name: Upload axe report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: axe-report
+          path: axe-report.json
