@@ -623,6 +623,356 @@
       gap: 0;
     }
 
+    /* --- Learn More / note block (Brief D-06) --- */
+    .learn-more {
+      background: #FAFAFA;
+      padding: 120px 0;
+      position: relative;
+    }
+    .learn-more .section-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .learn-more h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #111;
+      letter-spacing: 0.1em;
+      margin-top: 20px;
+      line-height: 1.25;
+    }
+    .learn-more h2 em {
+      color: var(--weby-red);
+      font-style: normal;
+    }
+    .learn-more .learn-lead {
+      text-align: center;
+      color: var(--text-gray);
+      font-size: 1rem;
+      line-height: 1.9;
+      margin: 40px auto 60px;
+      max-width: 640px;
+    }
+    .note-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .note-card {
+      display: block;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .note-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    }
+    .note-card-thumb {
+      aspect-ratio: 1200/630;
+      overflow: hidden;
+      position: relative;
+    }
+    .note-card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s;
+    }
+    .note-card:hover .note-card-thumb img {
+      transform: scale(1.05);
+    }
+    .note-card-body {
+      padding: 24px 22px 28px;
+    }
+    .note-card-tag {
+      display: inline-block;
+      font-family: var(--font-en);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      color: var(--weby-red);
+      margin-bottom: 10px;
+    }
+    .note-card-title {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.6;
+      color: #111;
+      margin-bottom: 10px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .note-card-arrow {
+      font-family: var(--font-en);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--weby-red);
+      font-weight: 900;
+    }
+    .note-main-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 60px auto 0;
+      padding: 18px 50px;
+      background: transparent;
+      color: var(--weby-red);
+      border: 2px solid var(--weby-red);
+      font-family: var(--font-en);
+      font-weight: 900;
+      font-size: 0.9rem;
+      letter-spacing: 0.25em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .note-main-cta:hover {
+      background: var(--weby-red);
+      color: #fff;
+    }
+    .learn-more-footer {
+      text-align: center;
+    }
+    .social-row {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin: 80px auto 0;
+      padding-top: 40px;
+      border-top: 1px solid var(--line-gray);
+      max-width: 640px;
+    }
+    .social-row a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: #333;
+      font-family: var(--font-en);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      transition: color 0.3s, transform 0.3s;
+    }
+    .social-row a:hover {
+      color: var(--weby-red);
+      transform: translateY(-2px);
+    }
+    .social-row i {
+      font-size: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .learn-more {
+        padding: 80px 0;
+      }
+      .learn-more h2 {
+        font-size: 2rem;
+      }
+      .note-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+        gap: 20px;
+      }
+      .social-row {
+        gap: 20px;
+        padding: 0 20px;
+        flex-wrap: wrap;
+      }
+    }
+
+    /* --- WHY We Exist (Brief D-02) --- */
+    .why-we-exist {
+      background: #fff;
+      padding: 140px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .why-we-exist::before {
+      content: 'WHY';
+      position: absolute;
+      top: 50%;
+      right: -4%;
+      transform: translateY(-50%);
+      font-family: var(--font-en);
+      font-size: 24vw;
+      font-weight: 900;
+      color: rgba(192, 20, 60, 0.025);
+      letter-spacing: -0.02em;
+      pointer-events: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .why-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      position: relative;
+      z-index: 1;
+    }
+    .why-visual {
+      position: relative;
+    }
+    .why-visual-primary {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+    }
+    .why-visual-secondary {
+      display: block;
+      width: 55%;
+      height: auto;
+      border-radius: 8px;
+      position: absolute;
+      right: -30px;
+      bottom: -40px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+      border: 6px solid #fff;
+    }
+    .why-text h2 {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #111;
+      line-height: 1.5;
+      letter-spacing: 0.03em;
+      margin-top: 24px;
+      margin-bottom: 40px;
+    }
+    .why-text h2 em {
+      color: var(--weby-red);
+      font-style: normal;
+    }
+    .why-body {
+      color: var(--text-gray);
+      font-size: 0.98rem;
+      line-height: 2.0;
+    }
+    .why-body p {
+      margin-bottom: 1.4em;
+    }
+    .why-body p:last-child {
+      margin-bottom: 0;
+    }
+    .why-body .why-highlight {
+      color: #111;
+      font-weight: 700;
+    }
+    .why-body .why-list {
+      margin: 1.4em 0;
+      padding-left: 0;
+      list-style: none;
+    }
+    .why-body .why-list li {
+      padding-left: 22px;
+      position: relative;
+      margin-bottom: 10px;
+    }
+    .why-body .why-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--weby-red);
+      font-weight: 900;
+    }
+    @media (max-width: 768px) {
+      .why-we-exist {
+        padding: 80px 0;
+      }
+      .why-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0 20px;
+      }
+      .why-text h2 {
+        font-size: 1.7rem;
+      }
+      .why-visual-secondary {
+        width: 50%;
+        right: -10px;
+        bottom: -20px;
+      }
+    }
+
+    /* --- Sticky Side CTA / 長期インターン (Brief D-05) --- */
+    .sticky-side-cta {
+      position: fixed;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--weby-red);
+      color: #fff;
+      padding: 22px 16px;
+      border-radius: 10px 0 0 10px;
+      box-shadow: -6px 6px 24px rgba(0, 0, 0, 0.18);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      z-index: 997;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s;
+      text-decoration: none;
+      min-width: 96px;
+      max-width: 120px;
+      text-align: center;
+    }
+    .sticky-side-cta.is-hidden {
+      transform: translate(110%, -50%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .ssc-label {
+      font-family: var(--font-en);
+      font-size: 0.6rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      opacity: 0.9;
+    }
+    .ssc-main {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 4px 0;
+      line-height: 1.2;
+    }
+    .ssc-sub {
+      font-size: 0.62rem;
+      opacity: 0.85;
+      line-height: 1.4;
+    }
+    .ssc-cta {
+      font-family: var(--font-en);
+      font-size: 0.65rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      margin-top: 10px;
+      padding: 6px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 2px;
+    }
+    @media (max-width: 768px) {
+      .sticky-side-cta {
+        display: none;
+      }
+    }
+
     /* --- Virtual Office Tour (Brief D-09) --- */
     .virtual-tour {
       max-width: 1100px;
@@ -3371,6 +3721,50 @@
     </div>
   </section>
 
+  <!-- WHY We Exist (Brief D-02) -->
+  <section class="why-we-exist">
+    <div class="why-inner reveal">
+      <div class="why-visual">
+        <img src="./service_pics/saimu-kyusai.webp"
+             alt="自社メディア「債務急済」— 借金問題の専門家とユーザーを繋ぐプラットフォーム"
+             class="why-visual-primary"
+             width="1000" height="1042" loading="lazy">
+        <img src="./service_pics/houmu-kyusai.webp"
+             alt="自社メディア「法務急済」— 企業法務の専門家検索サイト"
+             class="why-visual-secondary"
+             width="1000" height="996" loading="lazy">
+      </div>
+      <div class="why-text">
+        <span class="m-script">WHY WE EXIST</span>
+        <h2>信頼と専門性が、<br><em>まだ届いていない</em>人がいる。</h2>
+        <div class="why-body">
+          <p>
+            私たちのクライアントは、<span class="why-highlight">法律事務所・税理士事務所・社労士事務所</span>
+            などの「士業」の方々です。
+          </p>
+          <p>
+            本来、専門的な知識と経験で、
+            悩む人を救えるはずの専門家たち。<br>
+            でも多くの場合、彼らの存在は、
+            本当に必要としている人に届いていません。
+          </p>
+          <ul class="why-list">
+            <li>借金に追われる人が、信頼できる弁護士に辿り着けない</li>
+            <li>地元の法律事務所に、まっすぐで適切な問合せが来ない</li>
+          </ul>
+          <p>
+            この<span class="why-highlight">「届かない」</span>を、
+            Web の力で解決するのが私たちの仕事です。
+          </p>
+          <p>
+            自社メディア（債務急済・法務急済 等）と Web コンサルティングを通じて、
+            私たちは <span class="why-highlight">"届かない信頼"を繋ぐインフラ</span>を作っています。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Business Section -->
   <section id="business" class="business-section">
     <div class="container reveal">
@@ -3895,6 +4289,63 @@
     </div>
   </section>
 
+  <!-- Learn More / note block (Brief D-06) -->
+  <section class="learn-more">
+    <div class="container reveal">
+      <div class="section-header">
+        <span class="m-script">LEARN MORE</span>
+        <h2>会社を<em>もっと知る</em></h2>
+      </div>
+      <p class="learn-lead">
+        公式 note で、社員や代表の生の声を発信中。<br>
+        LP では伝えきれない、日常と挑戦をお届けします。
+      </p>
+      <div class="note-grid">
+        <a href="https://note.com/weby/n/nec7ba06aff34" target="_blank" rel="noopener noreferrer" class="note-card">
+          <div class="note-card-thumb">
+            <img src="./note_thumbs/training.webp" alt="" width="1200" height="630" loading="lazy">
+          </div>
+          <div class="note-card-body">
+            <span class="note-card-tag">研修制度</span>
+            <h3 class="note-card-title">即戦力への自立をサポート！WEBYの研修制度を公開</h3>
+            <span class="note-card-arrow">READ MORE →</span>
+          </div>
+        </a>
+        <a href="https://note.com/weby/n/n6a0f439ce350" target="_blank" rel="noopener noreferrer" class="note-card">
+          <div class="note-card-thumb">
+            <img src="./note_thumbs/about.webp" alt="" width="1200" height="630" loading="lazy">
+          </div>
+          <div class="note-card-body">
+            <span class="note-card-tag">会社紹介</span>
+            <h3 class="note-card-title">自己成長を後押し！風通しの良さと市場価値を高められる環境</h3>
+            <span class="note-card-arrow">READ MORE →</span>
+          </div>
+        </a>
+        <a href="https://note.com/weby/n/nd964812caec6" target="_blank" rel="noopener noreferrer" class="note-card">
+          <div class="note-card-thumb">
+            <img src="./note_thumbs/ceo-interview.webp" alt="" width="1200" height="630" loading="lazy">
+          </div>
+          <div class="note-card-body">
+            <span class="note-card-tag">代表インタビュー</span>
+            <h3 class="note-card-title">経営者であって職人。社員一人一人が自走できる会社へ</h3>
+            <span class="note-card-arrow">READ MORE →</span>
+          </div>
+        </a>
+      </div>
+      <div class="learn-more-footer">
+        <a href="https://note.com/weby" target="_blank" rel="noopener noreferrer" class="note-main-cta">
+          公式 note を読む <span aria-hidden="true">→</span>
+        </a>
+        <div class="social-row">
+          <a href="https://note.com/weby" target="_blank" rel="noopener noreferrer" aria-label="公式 note">
+            <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+            <span>note</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer (Professional Business Styling) -->
   <footer id="entry" style="background:#0d0d0d;">
     <div class="container">
@@ -3933,6 +4384,16 @@
       <span class="msc-sub">約3分</span>
     </a>
   </div>
+
+  <!-- Sticky Side CTA: 長期インターン (Brief D-05) -->
+  <a href="https://wise.weby.co.jp/" target="_blank" rel="noopener noreferrer"
+     class="sticky-side-cta" id="stickyInternCta"
+     aria-label="通年長期インターン wise.weby.co.jp">
+    <span class="ssc-label">LONG-TERM</span>
+    <span class="ssc-main">長期<br>インターン</span>
+    <span class="ssc-sub">週2〜・学年不問</span>
+    <span class="ssc-cta">詳しく →</span>
+  </a>
 
   <script>
     lucide.createIcons();
@@ -4237,6 +4698,33 @@
       window.addEventListener('resize', () => {
         document.body.classList.toggle('has-sticky-cta', isMobile());
       });
+    }
+
+    // Sticky Side CTA (D-05): hide near hero, post-recruit, learn-more, footer
+    const sideCta = document.getElementById('stickyInternCta');
+    if (sideCta) {
+      // Initially hidden until user scrolls past hero
+      sideCta.classList.add('is-hidden');
+      const heroSection = document.querySelector('.hero');
+      const hideTargets = [
+        document.querySelector('.recruit-cta'),
+        document.querySelector('.learn-more'),
+        document.querySelector('footer'),
+      ].filter(Boolean);
+      // Show once scrolled past hero
+      if (heroSection) {
+        const heroIo = new IntersectionObserver(([entry]) => {
+          if (!entry.isIntersecting) sideCta.classList.remove('is-hidden');
+          else sideCta.classList.add('is-hidden');
+        }, { threshold: 0 });
+        heroIo.observe(heroSection);
+      }
+      // Hide when near other CTA sections or footer
+      const sideIo = new IntersectionObserver(entries => {
+        const anyNearby = entries.some(e => e.isIntersecting);
+        if (anyNearby) sideCta.classList.add('is-hidden');
+      }, { rootMargin: '0px 0px -20% 0px', threshold: 0 });
+      hideTargets.forEach(el => sideIo.observe(el));
     }
   </script>
 </body>
