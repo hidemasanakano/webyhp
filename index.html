@@ -2738,6 +2738,39 @@
       white-space: nowrap;
     }
 
+    /* ============ Accessibility: Focus Visible (#7, #8, #9) ============ */
+    /* Only hide outline when focus is not keyboard-driven */
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+    :focus-visible {
+      outline: 2px solid var(--weby-red);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+    /* Dark backgrounds or red-filled elements: white outline for contrast */
+    .faq-q:focus-visible,
+    .wmodal-close:focus-visible,
+    .lightbox-close:focus-visible,
+    header.top-transparent nav a:focus-visible,
+    header.scrolled nav a:focus-visible,
+    footer a:focus-visible,
+    .nav-entry:focus-visible,
+    .hamburger:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+    }
+    /* Explicit rules for carousel elements (beat color: inheritance) */
+    .carousel-btn:focus-visible {
+      outline: 2px solid var(--weby-red);
+      outline-offset: 3px;
+    }
+    .carousel-dot:focus-visible {
+      outline: 2px solid var(--weby-red);
+      outline-offset: 4px;
+      border-radius: 50%;
+    }
+
     /* ============ Accessibility: Motion Preferences (#5) ============ */
     @media (prefers-reduced-motion: reduce) {
       .reveal {
@@ -2834,21 +2867,21 @@
       <h2 style="font-size: 3.8rem; font-weight: 900; letter-spacing: 0.1em;">働く環境</h2>
     </div>
     <div class="gallery-full reveal">
-      <div class="gallery-item">
+      <div class="gallery-item" role="button" tabindex="0">
         <img src="./facility_photos/sub2.png" alt="LOBBY" loading="lazy">
         <div class="g-label">
           <span class="g-loc">GINZA / 01</span>
           <h3 class="g-title">LOBBY</h3>
         </div>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" role="button" tabindex="0">
         <img src="./facility_photos/office2.png" alt="CREATIVE SPACE" loading="lazy">
         <div class="g-label">
           <span class="g-loc">GINZA / 02</span>
           <h3 class="g-title">CREATIVE SPACE</h3>
         </div>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" role="button" tabindex="0">
         <img src="./facility_photos/office5.png" alt="RELAXING SPACE" loading="lazy">
         <div class="g-label">
           <span class="g-loc">GINZA / 03</span>
@@ -3403,9 +3436,10 @@
     const obs = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); }), { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(e => obs.observe(e));
 
-    // Gallery lightbox
+    // Gallery lightbox (#9: keyboard support for role=button divs)
+    let _lightboxOpener = null;
     document.querySelectorAll('.gallery-item').forEach(item => {
-      item.addEventListener('click', () => {
+      const open = () => {
         const img = item.querySelector('img');
         const title = item.querySelector('.g-title')?.textContent || '';
         const loc = item.querySelector('.g-loc')?.textContent || '';
@@ -3413,12 +3447,24 @@
         document.getElementById('lightbox-caption').textContent = loc + '  —  ' + title;
         document.getElementById('lightbox').classList.add('open');
         document.body.style.overflow = 'hidden';
+        // #9: move focus to close button for keyboard users
+        _lightboxOpener = item;
+        setTimeout(() => document.querySelector('.lightbox-close')?.focus(), 0);
+      };
+      item.addEventListener('click', open);
+      item.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          open();
+        }
       });
     });
 
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('open');
       document.body.style.overflow = '';
+      // #9: restore focus to the opener
+      if (_lightboxOpener) { _lightboxOpener.focus(); _lightboxOpener = null; }
     }
 
     // #12: Escape closes any open modal (worker modal takes precedence)
@@ -3501,6 +3547,7 @@
       }
     ];
 
+    let _workerOpener = null;
     function openWorker(i) {
       const d = workerData[i];
       document.getElementById('wmodal-content').innerHTML = `
@@ -3521,11 +3568,16 @@
       `;
       document.getElementById('worker-modal').classList.add('active');
       document.body.style.overflow = 'hidden';
+      // #9: move focus to close button; remember opener for restoration
+      _workerOpener = document.activeElement;
+      setTimeout(() => document.querySelector('#worker-modal .wmodal-close')?.focus(), 0);
     }
 
     function closeWorker() {
       document.getElementById('worker-modal').classList.remove('active');
       document.body.style.overflow = '';
+      // #9: restore focus to opener
+      if (_workerOpener) { _workerOpener.focus?.(); _workerOpener = null; }
     }
 
     // Budo Animation
