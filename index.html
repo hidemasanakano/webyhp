@@ -460,19 +460,27 @@
       overflow: hidden;
     }
 
-    .business-section::before {
-      content: 'BUSINESS';
+    /* Common large decorative background text (#28) */
+    .section-bg-text,
+    .business-section::before,
+    .faq-section::before,
+    .ceo-section::before {
       position: absolute;
       top: 50%;
-      left: -2%;
       transform: translateY(-50%);
       font-family: var(--font-en);
-      font-size: 20vw;
       font-weight: 900;
-      color: rgba(0, 0, 0, 0.03);
       letter-spacing: -0.02em;
       pointer-events: none;
       white-space: nowrap;
+      line-height: 1;
+    }
+
+    .business-section::before {
+      content: 'BUSINESS';
+      left: -2%;
+      font-size: 20vw;
+      color: rgba(0, 0, 0, 0.03);
     }
 
     .biz-categories {
@@ -508,7 +516,7 @@
       font-family: var(--font-en);
       font-size: 10rem;
       font-weight: 900;
-      color: rgba(255,31,75,0.12);
+      color: rgba(192,20,60,0.12);
       line-height: 1;
       pointer-events: none;
     }
@@ -527,7 +535,7 @@
       font-family: var(--font-en);
       font-size: 0.65rem;
       letter-spacing: 0.5em;
-      color: rgba(255,31,75,0.8);
+      color: rgba(192,20,60,0.8);
       display: block;
       margin-bottom: 16px;
     }
@@ -540,7 +548,7 @@
       line-height: 1;
       display: block;
       margin-bottom: 12px;
-      text-shadow: 0 0 40px rgba(255,31,75,0.4);
+      text-shadow: 0 0 40px rgba(192,20,60,0.4);
     }
 
     .biz-cat-top-title {
@@ -677,7 +685,7 @@
       height: 0;
       border-top: 50px solid transparent;
       border-bottom: 50px solid transparent;
-      border-left: 24px solid rgba(255,31,75,0.15);
+      border-left: 24px solid rgba(192,20,60,0.15);
       z-index: 2;
     }
 
@@ -1015,7 +1023,7 @@
       left: 50%;
       transform: translate(-50%, -50%) scale(0.8);
       z-index: 20;
-      background: rgba(255, 31, 75, 0.9);
+      background: rgba(192, 20, 60, 0.9);
       color: white;
       font-family: var(--font-en);
       font-size: 0.75rem;
@@ -1244,50 +1252,6 @@
       border-top: 1px solid var(--line-gray);
     }
 
-    .faq-list {
-      max-width: 1000px;
-      margin: 70px auto 0;
-    }
-
-    .faq-item {
-      border-bottom: 1px solid var(--line-gray);
-      padding: 55px 0;
-      transition: 0.5s;
-      position: relative;
-    }
-
-    .faq-q {
-      font-size: 1.8rem;
-      font-weight: 900;
-      display: flex;
-      gap: 40px;
-      align-items: flex-start;
-    }
-
-    .faq-q::before {
-      content: "Q";
-      color: var(--weby-red);
-      font-family: var(--font-en);
-      font-weight: 1000;
-      font-size: 2.8rem;
-      font-style: italic;
-      line-height: 1;
-      margin-top: -10px;
-    }
-
-    .faq-a {
-      padding-left: 95px;
-      color: #555;
-      font-size: 1.2rem;
-      line-height: 2.4;
-      margin-top: 40px;
-    }
-
-    .faq-item:hover {
-      background: rgba(255, 31, 75, 0.02);
-      padding-left: 40px;
-    }
-
     /* --- Recruit Section (Recovered FULL INFO) --- */
     .recruit-section {
       background: #FAFAFA;
@@ -1411,7 +1375,7 @@
       background: var(--weby-red);
       color: white !important;
       border-radius: 4px;
-      box-shadow: 0 4px 15px rgba(255, 31, 75, 0.2);
+      box-shadow: 0 4px 15px rgba(192, 20, 60, 0.2);
     }
 
     /* --- FAQ Section --- */
@@ -1424,18 +1388,9 @@
 
     .faq-section::before {
       content: 'FAQ';
-      position: absolute;
-      top: 50%;
       left: -2%;
-      transform: translateY(-50%);
-      font-family: var(--font-en);
       font-size: 22vw;
-      font-weight: 900;
       color: rgba(255,255,255,0.03);
-      letter-spacing: -0.02em;
-      pointer-events: none;
-      white-space: nowrap;
-      line-height: 1;
     }
 
     .faq-section .m-script {
@@ -1504,7 +1459,7 @@
     .faq-icon {
       width: 28px;
       height: 28px;
-      border: 1px solid rgba(255,31,75,0.5);
+      border: 1px solid rgba(192,20,60,0.5);
       border-radius: 50%;
       flex-shrink: 0;
       position: relative;
@@ -1810,7 +1765,7 @@
       }
 
       30% {
-        -webkit-text-stroke: 1px rgba(255, 31, 75, 0.15);
+        -webkit-text-stroke: 1px rgba(192, 20, 60, 0.15);
       }
 
       100% {
@@ -1833,16 +1788,9 @@
     }
     .ceo-section::before {
       content: 'CEO';
-      position: absolute;
       right: -20px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: 'Montserrat', sans-serif;
       font-size: 18rem;
-      font-weight: 900;
       color: rgba(255,255,255,0.03);
-      line-height: 1;
-      pointer-events: none;
     }
     .ceo-inner {
       display: grid;
@@ -2805,6 +2753,52 @@
       white-space: nowrap;
     }
 
+    /* ============ Common Card Hover Utilities (#29) ============ */
+    /* Lift: slight translateY + stronger shadow on hover */
+    .card-hover-lift {
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card-hover-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+    /* Scale: image inside container zooms subtly on parent hover */
+    .card-hover-scale > img,
+    .card-hover-scale img {
+      transition: transform 1.2s;
+    }
+    .card-hover-scale:hover > img,
+    .card-hover-scale:hover img {
+      transform: scale(1.06);
+    }
+
+    /* ============ Common Gradient Overlays (#30) ============ */
+    /* All overlays are pointer-events: none; typically used with position:absolute */
+    .gradient-overlay-bottom-dark {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .gradient-overlay-bottom-medium {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 40%);
+      pointer-events: none;
+    }
+    .gradient-overlay-bottom-soft {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .gradient-overlay-right-white {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 60%, white 100%);
+      pointer-events: none;
+    }
+
     /* ============ Accessibility: Focus Visible (#7, #8, #9) ============ */
     /* Only hide outline when focus is not keyboard-driven */
     :focus:not(:focus-visible) {
@@ -3473,7 +3467,7 @@
   <footer id="entry" style="background:#0d0d0d;">
     <div class="container">
       <div style="text-align:center; padding: 48px 0 32px;">
-        <a href="https://weby.app.n8n.cloud/form/325613fd-51ee-44e1-ae64-b751ae7623e2" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#FF1F4B; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:1rem; letter-spacing:0.12em; padding:18px 56px; text-decoration:none; text-transform:uppercase; transition:background 0.2s;">PRE-ENTRY</a>
+        <a href="https://weby.app.n8n.cloud/form/325613fd-51ee-44e1-ae64-b751ae7623e2" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:var(--weby-red); color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:1rem; letter-spacing:0.12em; padding:18px 56px; text-decoration:none; text-transform:uppercase; transition:background 0.2s;">PRE-ENTRY</a>
       </div>
       <div class="f-bottom">
         <img src="./photos/logo.png" width="460" height="272" class="f-logo" loading="lazy" decoding="async" alt="WEBY">
