@@ -3614,21 +3614,97 @@
       });
     }
 
-    // Hamburger menu toggle (#20: aria-expanded sync)
+    // ============ Focus Trap Helper (#11, #21) ============
+    // Returns a teardown function to detach the trap.
+    function installFocusTrap(container) {
+      const focusable = () => container.querySelectorAll(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"]), input:not([disabled]), select:not([disabled])'
+      );
+      const handler = (e) => {
+        if (e.key !== 'Tab') return;
+        const items = Array.from(focusable()).filter(el => el.offsetParent !== null || el === document.activeElement);
+        if (items.length === 0) return;
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          last.focus();
+          e.preventDefault();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          first.focus();
+          e.preventDefault();
+        }
+      };
+      container.addEventListener('keydown', handler);
+      return () => container.removeEventListener('keydown', handler);
+    }
+
+    let _workerTrap = null, _lightboxTrap = null, _mobileMenuTrap = null;
+
+    // Attach focus trap on modal open (extends Batch B initial focus)
+    const _origOpenWorker = window.openWorker;
+    window.openWorker = function (i) {
+      _origOpenWorker(i);
+      _workerTrap?.();
+      _workerTrap = installFocusTrap(document.getElementById('worker-modal'));
+      // Re-assert focus on close button after trap install to avoid race with Batch B's setTimeout
+      requestAnimationFrame(() => {
+        document.querySelector('#worker-modal .wmodal-close')?.focus();
+      });
+    };
+    const _origCloseWorker = window.closeWorker;
+    window.closeWorker = function () {
+      _workerTrap?.();
+      _workerTrap = null;
+      _origCloseWorker();
+    };
+
+    // Lightbox trap: intercept open (click + keydown on gallery-item already set up in Batch B)
+    const _lightboxEl = document.getElementById('lightbox');
+    new MutationObserver(muts => {
+      for (const m of muts) {
+        if (m.attributeName !== 'class') continue;
+        const open = _lightboxEl.classList.contains('open');
+        if (open && !_lightboxTrap) {
+          _lightboxTrap = installFocusTrap(_lightboxEl);
+        } else if (!open && _lightboxTrap) {
+          _lightboxTrap();
+          _lightboxTrap = null;
+        }
+      }
+    }).observe(_lightboxEl, { attributes: true });
+
+    // Hamburger menu toggle (#20: aria-expanded sync; #21: focus trap + Escape)
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav');
+    const closeMobileMenu = () => {
+      hamburger.classList.remove('active');
+      navMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      _mobileMenuTrap?.();
+      _mobileMenuTrap = null;
+    };
     hamburger.addEventListener('click', () => {
       const isOpen = navMenu.classList.toggle('open');
       hamburger.classList.toggle('active', isOpen);
       hamburger.setAttribute('aria-expanded', String(isOpen));
+      if (isOpen) {
+        setTimeout(() => navMenu.querySelector('a')?.focus(), 50);
+        _mobileMenuTrap = installFocusTrap(navMenu);
+      } else {
+        _mobileMenuTrap?.();
+        _mobileMenuTrap = null;
+      }
     });
     // Close menu when a nav link is clicked
     navMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-      });
+      link.addEventListener('click', closeMobileMenu);
+    });
+    // #21: Escape closes mobile menu and returns focus to hamburger
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+        closeMobileMenu();
+        hamburger.focus();
+      }
     });
   </script>
 </body>
