@@ -93,6 +93,15 @@
       --line-gray: #EEEEEE;
       --font-en: 'Montserrat', sans-serif;
       --font-serif: 'Noto Serif JP', serif;
+      /* Font size tokens (#33) — new code should use these variables */
+      --fs-hero: 4.8rem;
+      --fs-h2: 3.2rem;
+      --fs-h2-lg: 3.8rem;
+      --fs-card: 1.8rem;
+      --fs-body-lg: 1.1rem;
+      --fs-body: 1rem;
+      --fs-caption: 0.9rem;
+      --fs-tag: 0.75rem;
     }
 
     * {
@@ -294,10 +303,26 @@
       font-family: var(--font-en);
       font-weight: 900;
       color: var(--weby-red);
-      font-size: 1.1rem;
+      font-size: var(--fs-body-lg);
       letter-spacing: 0.6em;
       display: block;
       margin-bottom: 60px;
+    }
+
+    /* Common section title (#27) — new sections should use this pair */
+    .section-title {
+      font-size: var(--fs-h2);
+      font-weight: 700;
+      color: #111;
+      letter-spacing: 0.1em;
+      line-height: 1.25;
+    }
+    .section-title--lg {
+      font-size: var(--fs-h2-lg);
+    }
+    .section-title em {
+      color: var(--weby-red);
+      font-style: normal;
     }
 
     .m-copy {
