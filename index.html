@@ -1094,6 +1094,10 @@
       background: #ddd;
       cursor: pointer;
       transition: 0.3s;
+      /* #22: button element reset (was <div> before) */
+      appearance: none;
+      border: none;
+      padding: 0;
     }
 
     .carousel-dot.active {
@@ -1398,6 +1402,14 @@
       cursor: pointer;
       user-select: none;
       transition: opacity 0.2s;
+      /* #13: button element reset (keep layout identical to former div) */
+      appearance: none;
+      background: transparent;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font: inherit;
+      color: inherit;
     }
 
     .faq-q:hover {
@@ -2725,13 +2737,30 @@
       padding: 2px 8px;
       white-space: nowrap;
     }
+
+    /* ============ Accessibility: Motion Preferences (#5) ============ */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .carousel-track { transition: none; }
+      html { scroll-behavior: auto; }
+    }
   </style>
 </head>
 
 <body>
   <header id="header" class="top-transparent">
     <div class="logo"><img src="./photos/logo.png" alt="WEBY"></div>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
       <span></span>
       <span></span>
       <span></span>
@@ -2741,7 +2770,7 @@
       <a href="#business">BUSINESS</a>
       <a href="#people">STORY</a>
       <a href="#recruit">RECRUIT</a>
-      <a href="https://weby.app.n8n.cloud/form/325613fd-51ee-44e1-ae64-b751ae7623e2" target="_blank" rel="noopener" class="nav-entry">ENTRY</a>
+      <a href="https://weby.app.n8n.cloud/form/325613fd-51ee-44e1-ae64-b751ae7623e2" target="_blank" rel="noopener noreferrer" class="nav-entry">ENTRY</a>
     </nav>
   </header>
 
@@ -2998,11 +3027,11 @@
         <h2 style="font-size: 3.8rem; font-weight: 700;">情熱が、交差する場所。</h2>
       </div>
     </div>
-    <div class="carousel-wrapper reveal">
-      <div class="carousel-track" id="carouselTrack">
+    <div class="carousel-wrapper reveal" aria-roledescription="carousel" aria-label="社員ストーリー">
+      <div class="carousel-track" id="carouselTrack" aria-live="polite">
 
         <!-- Slide 1 -->
-        <div class="carousel-slide">
+        <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 / 3">
           <div class="carousel-img">
             <img src="./member_photos/member1.JPG" alt="">
           </div>
@@ -3033,19 +3062,19 @@
               </div>
             </div>
             <div class="carousel-controls">
-              <button class="carousel-btn" onclick="moveCarousel(-1)">←</button>
-              <button class="carousel-btn" onclick="moveCarousel(1)">→</button>
+              <button class="carousel-btn" aria-label="前のスライド" onclick="moveCarousel(-1)">←</button>
+              <button class="carousel-btn" aria-label="次のスライド" onclick="moveCarousel(1)">→</button>
               <div class="carousel-dots" id="carouselDots">
-                <div class="carousel-dot active" onclick="goToSlide(0)"></div>
-                <div class="carousel-dot" onclick="goToSlide(1)"></div>
-                <div class="carousel-dot" onclick="goToSlide(2)"></div>
+                <button class="carousel-dot active" type="button" aria-label="1 枚目にジャンプ" aria-current="true" onclick="goToSlide(0)"></button>
+                <button class="carousel-dot" type="button" aria-label="2 枚目にジャンプ" onclick="goToSlide(1)"></button>
+                <button class="carousel-dot" type="button" aria-label="3 枚目にジャンプ" onclick="goToSlide(2)"></button>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Slide 2 -->
-        <div class="carousel-slide">
+        <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 / 3">
           <div class="carousel-img">
             <img src="./member_photos/IMG_1901.JPG" alt="">
           </div>
@@ -3075,19 +3104,19 @@
               </div>
             </div>
             <div class="carousel-controls">
-              <button class="carousel-btn" onclick="moveCarousel(-1)">←</button>
-              <button class="carousel-btn" onclick="moveCarousel(1)">→</button>
+              <button class="carousel-btn" aria-label="前のスライド" onclick="moveCarousel(-1)">←</button>
+              <button class="carousel-btn" aria-label="次のスライド" onclick="moveCarousel(1)">→</button>
               <div class="carousel-dots" id="carouselDots2">
-                <div class="carousel-dot" onclick="goToSlide(0)"></div>
-                <div class="carousel-dot active" onclick="goToSlide(1)"></div>
-                <div class="carousel-dot" onclick="goToSlide(2)"></div>
+                <button class="carousel-dot" type="button" aria-label="1 枚目にジャンプ" onclick="goToSlide(0)"></button>
+                <button class="carousel-dot active" type="button" aria-label="2 枚目にジャンプ" aria-current="true" onclick="goToSlide(1)"></button>
+                <button class="carousel-dot" type="button" aria-label="3 枚目にジャンプ" onclick="goToSlide(2)"></button>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Slide 3 -->
-        <div class="carousel-slide">
+        <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 / 3">
           <div class="carousel-img">
             <img src="./member_photos/B.jpg" alt="">
           </div>
@@ -3117,12 +3146,12 @@
               </div>
             </div>
             <div class="carousel-controls">
-              <button class="carousel-btn" onclick="moveCarousel(-1)">←</button>
-              <button class="carousel-btn" onclick="moveCarousel(1)">→</button>
+              <button class="carousel-btn" aria-label="前のスライド" onclick="moveCarousel(-1)">←</button>
+              <button class="carousel-btn" aria-label="次のスライド" onclick="moveCarousel(1)">→</button>
               <div class="carousel-dots" id="carouselDots3">
-                <div class="carousel-dot" onclick="goToSlide(0)"></div>
-                <div class="carousel-dot" onclick="goToSlide(1)"></div>
-                <div class="carousel-dot active" onclick="goToSlide(2)"></div>
+                <button class="carousel-dot" type="button" aria-label="1 枚目にジャンプ" onclick="goToSlide(0)"></button>
+                <button class="carousel-dot" type="button" aria-label="2 枚目にジャンプ" onclick="goToSlide(1)"></button>
+                <button class="carousel-dot active" type="button" aria-label="3 枚目にジャンプ" aria-current="true" onclick="goToSlide(2)"></button>
               </div>
             </div>
           </div>
@@ -3225,14 +3254,14 @@
     <div class="container">
       <p class="jb-label">FIND US ON JOB BOARDS</p>
       <div class="jb-grid">
-        <a href="https://job.mynavi.jp/27/pc/search/corp294420/outline.html" target="_blank" rel="noopener"
+        <a href="https://job.mynavi.jp/27/pc/search/corp294420/outline.html" target="_blank" rel="noopener noreferrer"
           class="jb-card reveal">
           <img src="./photos/banner-mynavi.png" alt="マイナビ2026 株式会社WEBY採用情報">
           <div class="jb-card-overlay">
             <span class="jb-card-cta">採用情報を見る →</span>
           </div>
         </a>
-        <a href="https://doda.jp/DodaFront/View/CompanyJobs/j_id__10116656047/" target="_blank" rel="noopener"
+        <a href="https://doda.jp/DodaFront/View/CompanyJobs/j_id__10116656047/" target="_blank" rel="noopener noreferrer"
           class="jb-card reveal">
           <img src="./photos/banner-doda.png" alt="dodaキャンパス 株式会社WEBY採用情報">
           <div class="jb-card-overlay">
@@ -3253,12 +3282,12 @@
       <div class="faq-list">
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-1">
             <span class="faq-q-mark">Q.</span>
             <span class="faq-q-text">面接ではどんなことを見ていますか？</span>
             <span class="faq-icon"></span>
-          </div>
-          <div class="faq-a">
+          </button>
+          <div class="faq-a" id="faq-a-1" role="region">
             <div class="faq-a-inner">
               <span class="faq-a-mark">A.</span>
               <p class="faq-a-text">主に重視しているのは、「自分で考えて行動できるか」という点です。あわせて、物事を目的から逆算して考えられるか、そして前向きに挑戦できる姿勢があるかも見ています。</p>
@@ -3267,12 +3296,12 @@
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-2">
             <span class="faq-q-mark">Q.</span>
             <span class="faq-q-text">入社後の研修はありますか？</span>
             <span class="faq-icon"></span>
-          </div>
-          <div class="faq-a">
+          </button>
+          <div class="faq-a" id="faq-a-2" role="region">
             <div class="faq-a-inner">
               <span class="faq-a-mark">A.</span>
               <p class="faq-a-text">はい、あります。WEBYでは内定後から長期インターンとして実務に関わることができ、入社後も継続して研修を行います。研修では、業界知識や商材理解に加えて、営業スキルの習得やOJTを通じた実践経験を積んでいきます。最終的には、営業として自立できる状態を目指した設計になっています。</p>
@@ -3281,12 +3310,12 @@
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-3">
             <span class="faq-q-mark">Q.</span>
             <span class="faq-q-text">未経験でも活躍できますか？</span>
             <span class="faq-icon"></span>
-          </div>
-          <div class="faq-a">
+          </button>
+          <div class="faq-a" id="faq-a-3" role="region">
             <div class="faq-a-inner">
               <span class="faq-a-mark">A.</span>
               <p class="faq-a-text">可能です。実際に未経験からスタートし、営業として成果を出している社員も多く在籍しています。研修やOJTを通じて段階的にスキルを身につけていくため、経験がなくても安心して挑戦できる環境です。</p>
@@ -3295,12 +3324,12 @@
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-4">
             <span class="faq-q-mark">Q.</span>
             <span class="faq-q-text">配属はどのように決まりますか？</span>
             <span class="faq-icon"></span>
-          </div>
-          <div class="faq-a">
+          </button>
+          <div class="faq-a" id="faq-a-4" role="region">
             <div class="faq-a-inner">
               <span class="faq-a-mark">A.</span>
               <p class="faq-a-text">新卒は総合職として入社し、セールスやカスタマーサクセスなどのポジションに配属されます。本人の適性や希望を踏まえながら、最適なポジションが決定されます。</p>
@@ -3309,12 +3338,12 @@
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-5">
             <span class="faq-q-mark">Q.</span>
             <span class="faq-q-text">社内の雰囲気はどんな感じですか？</span>
             <span class="faq-icon"></span>
-          </div>
-          <div class="faq-a">
+          </button>
+          <div class="faq-a" id="faq-a-5" role="region">
             <div class="faq-a-inner">
               <span class="faq-a-mark">A.</span>
               <p class="faq-a-text">WEBYには、オープンでフレンドリーなメンバーが多く、休憩中にも自然とコミュニケーションが生まれる環境があります。一方で業務においては、挑戦志向の高い人が多く、お互いに切磋琢磨しながら成長していける雰囲気があります。</p>
@@ -3323,12 +3352,12 @@
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-6">
             <span class="faq-q-mark">Q.</span>
             <span class="faq-q-text">福利厚生はありますか？</span>
             <span class="faq-icon"></span>
-          </div>
-          <div class="faq-a">
+          </button>
+          <div class="faq-a" id="faq-a-6" role="region">
             <div class="faq-a-inner">
               <span class="faq-a-mark">A.</span>
               <p class="faq-a-text">はい、あります。食事補助制度やフリードリンク、米・味噌汁の提供など日常を支える制度に加え、書籍購入補助やITツール導入支援など、成長を後押しする制度も整えています。また、社会保険も完備しています。</p>
@@ -3344,7 +3373,7 @@
   <footer id="entry" style="background:#0d0d0d;">
     <div class="container">
       <div style="text-align:center; padding: 48px 0 32px;">
-        <a href="https://weby.app.n8n.cloud/form/325613fd-51ee-44e1-ae64-b751ae7623e2" target="_blank" rel="noopener" style="display:inline-block; background:#FF1F4B; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:1rem; letter-spacing:0.12em; padding:18px 56px; text-decoration:none; text-transform:uppercase; transition:background 0.2s;">PRE-ENTRY</a>
+        <a href="https://weby.app.n8n.cloud/form/325613fd-51ee-44e1-ae64-b751ae7623e2" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#FF1F4B; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:1rem; letter-spacing:0.12em; padding:18px 56px; text-decoration:none; text-transform:uppercase; transition:background 0.2s;">PRE-ENTRY</a>
       </div>
       <div class="f-bottom">
         <img src="./photos/logo.png" class="f-logo">
@@ -3353,17 +3382,17 @@
     </div>
   </footer>
 
-  <!-- Lightbox -->
-  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
-    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <!-- Lightbox (#10: ARIA) -->
+  <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="画像拡大表示" onclick="closeLightbox()">
+    <button class="lightbox-close" aria-label="閉じる" onclick="closeLightbox()">&times;</button>
     <img class="lightbox-img" id="lightbox-img" src="" alt="">
     <div class="lightbox-caption" id="lightbox-caption"></div>
   </div>
 
-  <!-- Worker Modal -->
-  <div id="worker-modal" class="wmodal-overlay" onclick="closeWorker()">
+  <!-- Worker Modal (#10: ARIA) -->
+  <div id="worker-modal" class="wmodal-overlay" role="dialog" aria-modal="true" aria-labelledby="wm-name" onclick="closeWorker()">
     <div class="wmodal-box" onclick="event.stopPropagation()">
-      <button class="wmodal-close" onclick="closeWorker()">&times;</button>
+      <button class="wmodal-close" aria-label="閉じる" onclick="closeWorker()">&times;</button>
       <div id="wmodal-content"></div>
     </div>
   </div>
@@ -3392,17 +3421,28 @@
       document.body.style.overflow = '';
     }
 
+    // #12: Escape closes any open modal (worker modal takes precedence)
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeLightbox();
+      if (e.key !== 'Escape') return;
+      const workerModal = document.getElementById('worker-modal');
+      const lightbox = document.getElementById('lightbox');
+      if (workerModal?.classList.contains('active')) closeWorker();
+      else if (lightbox?.classList.contains('open')) closeLightbox();
     });
 
-    // FAQ accordion
+    // FAQ accordion (#13: aria-expanded sync)
     document.querySelectorAll('.faq-q').forEach(q => {
       q.addEventListener('click', () => {
         const item = q.closest('.faq-item');
         const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-        if (!isOpen) item.classList.add('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-q')?.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          q.setAttribute('aria-expanded', 'true');
+        }
       });
     });
 
@@ -3465,7 +3505,7 @@
       const d = workerData[i];
       document.getElementById('wmodal-content').innerHTML = `
         <span class="wm-tag">${d.tag}</span>
-        <h2 class="wm-name">${d.name}</h2>
+        <h2 class="wm-name" id="wm-name">${d.name}</h2>
         <p class="wm-quote">"${d.quote}"</p>
         ${d.intro ? `<p class="wm-intro">${d.intro}</p>` : ''}
         <div class="wm-section">
@@ -3514,22 +3554,28 @@
     function updateCarousel() {
       document.getElementById('carouselTrack').style.transform = `translateX(-${currentSlide * 100}%)`;
       document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
-        dot.classList.toggle('active', i % totalSlides === currentSlide);
+        const active = i % totalSlides === currentSlide;
+        dot.classList.toggle('active', active);
+        // #22: aria-current sync
+        if (active) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
       });
     }
 
-    // Hamburger menu toggle
+    // Hamburger menu toggle (#20: aria-expanded sync)
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav');
     hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('open');
+      const isOpen = navMenu.classList.toggle('open');
+      hamburger.classList.toggle('active', isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
     });
     // Close menu when a nav link is clicked
     navMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         navMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
       });
     });
   </script>
