@@ -3146,13 +3146,13 @@
         <h2 style="font-size: 3.8rem; font-weight: 700;">情熱が、交差する場所。</h2>
       </div>
     </div>
-    <div class="carousel-wrapper reveal" aria-roledescription="carousel" aria-label="社員ストーリー">
+    <div class="carousel-wrapper reveal" aria-roledescription="carousel" aria-label="社員ストーリー" tabindex="0" id="carouselWrapper">
       <div class="carousel-track" id="carouselTrack" aria-live="polite">
 
         <!-- Slide 1 -->
         <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 / 3">
           <div class="carousel-img">
-            <img src="./member_photos/member1.webp" width="1400" height="934" alt="" loading="lazy" decoding="async">
+            <img src="./member_photos/member1.webp" width="1400" height="934" alt="カスタマーサクセス M.O." loading="lazy" decoding="async">
           </div>
           <div class="carousel-info">
             <span class="carousel-tag">CUSTOMER SUCCESS</span>
@@ -3195,7 +3195,7 @@
         <!-- Slide 2 -->
         <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 / 3">
           <div class="carousel-img">
-            <img src="./member_photos/IMG_1901.webp" width="1400" height="934" alt="" loading="lazy" decoding="async">
+            <img src="./member_photos/IMG_1901.webp" width="1400" height="934" alt="セールスマネージャー Y.K." loading="lazy" decoding="async">
           </div>
           <div class="carousel-info">
             <span class="carousel-tag">SALES MANAGER</span>
@@ -3237,7 +3237,7 @@
         <!-- Slide 3 -->
         <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 / 3">
           <div class="carousel-img">
-            <img src="./member_photos/B.webp" width="1400" height="934" alt="" loading="lazy" decoding="async">
+            <img src="./member_photos/B.webp" width="1400" height="934" alt="ディレクター Y.O." loading="lazy" decoding="async">
           </div>
           <div class="carousel-info">
             <span class="carousel-tag">DIRECTOR</span>
@@ -3529,7 +3529,10 @@
         const img = item.querySelector('img');
         const title = item.querySelector('.g-title')?.textContent || '';
         const loc = item.querySelector('.g-loc')?.textContent || '';
-        document.getElementById('lightbox-img').src = img.src;
+        const lbImg = document.getElementById('lightbox-img');
+        lbImg.src = img.src;
+        // #25: propagate alt to lightbox for screen readers
+        lbImg.alt = img.alt || title;
         document.getElementById('lightbox-caption').textContent = loc + '  —  ' + title;
         document.getElementById('lightbox').classList.add('open');
         document.body.style.overflow = 'hidden';
@@ -3699,6 +3702,12 @@
         else dot.removeAttribute('aria-current');
       });
     }
+
+    // #23: Arrow keys navigate carousel when wrapper is focused
+    document.getElementById('carouselWrapper')?.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') { moveCarousel(-1); e.preventDefault(); }
+      else if (e.key === 'ArrowRight') { moveCarousel(1); e.preventDefault(); }
+    });
 
     // ============ Focus Trap Helper (#11, #21) ============
     // Returns a teardown function to detach the trap.
