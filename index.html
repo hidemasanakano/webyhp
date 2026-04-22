@@ -78,7 +78,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- #19: Preload Hero LCP image for faster first paint -->
-  <link rel="preload" as="image" href="./photos/mainbanner.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="./photos/mainbanner-1200w.webp" imagesrcset="./photos/mainbanner-600w.webp 600w, ./photos/mainbanner-1200w.webp 1200w, ./photos/mainbanner-1920w.webp 1920w" imagesizes="100vw" fetchpriority="high">
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Noto+Serif+JP:wght@300;400;700;900&display=swap"
     rel="stylesheet">
@@ -221,7 +221,12 @@
     .hero-bg {
       position: absolute;
       inset: 0;
+      /* #31: AVIF primary with WebP fallback via image-set() */
       background-image: url('./photos/mainbanner.webp');
+      background-image: image-set(
+        url('./photos/mainbanner-1920w.avif') type('image/avif'),
+        url('./photos/mainbanner-1920w.webp') type('image/webp')
+      );
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
@@ -2954,21 +2959,21 @@
     </div>
     <div class="gallery-full reveal">
       <div class="gallery-item" role="button" tabindex="0">
-        <img src="./facility_photos/sub2.webp" width="1400" height="941" alt="LOBBY" loading="lazy">
+        <img src="./facility_photos/sub2.webp" srcset="./facility_photos/sub2-600w.webp 600w, ./facility_photos/sub2-1200w.webp 1200w, ./facility_photos/sub2.webp 1400w" sizes="(max-width: 768px) 100vw, 33vw" width="1400" height="941" alt="LOBBY" loading="lazy">
         <div class="g-label">
           <span class="g-loc">GINZA / 01</span>
           <h3 class="g-title">LOBBY</h3>
         </div>
       </div>
       <div class="gallery-item" role="button" tabindex="0">
-        <img src="./facility_photos/office2.webp" width="1400" height="944" alt="CREATIVE SPACE" loading="lazy">
+        <img src="./facility_photos/office2.webp" srcset="./facility_photos/office2-600w.webp 600w, ./facility_photos/office2-1200w.webp 1200w, ./facility_photos/office2.webp 1400w" sizes="(max-width: 768px) 100vw, 33vw" width="1400" height="944" alt="CREATIVE SPACE" loading="lazy">
         <div class="g-label">
           <span class="g-loc">GINZA / 02</span>
           <h3 class="g-title">CREATIVE SPACE</h3>
         </div>
       </div>
       <div class="gallery-item" role="button" tabindex="0">
-        <img src="./facility_photos/office5.webp" width="1400" height="937" alt="RELAXING SPACE" loading="lazy">
+        <img src="./facility_photos/office5.webp" srcset="./facility_photos/office5-600w.webp 600w, ./facility_photos/office5-1200w.webp 1200w, ./facility_photos/office5.webp 1400w" sizes="(max-width: 768px) 100vw, 33vw" width="1400" height="937" alt="RELAXING SPACE" loading="lazy">
         <div class="g-label">
           <span class="g-loc">GINZA / 03</span>
           <h3 class="g-title">RELAXING SPACE</h3>
@@ -3152,7 +3157,7 @@
         <!-- Slide 1 -->
         <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 / 3">
           <div class="carousel-img">
-            <img src="./member_photos/member1.webp" width="1400" height="934" alt="カスタマーサクセス M.O." loading="lazy" decoding="async">
+            <img src="./member_photos/member1.webp" srcset="./member_photos/member1-600w.webp 600w, ./member_photos/member1-1200w.webp 1200w, ./member_photos/member1.webp 1400w" sizes="(max-width: 768px) 100vw, 50vw" width="1400" height="934" alt="カスタマーサクセス M.O." loading="lazy" decoding="async">
           </div>
           <div class="carousel-info">
             <span class="carousel-tag">CUSTOMER SUCCESS</span>
@@ -3195,7 +3200,7 @@
         <!-- Slide 2 -->
         <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 / 3">
           <div class="carousel-img">
-            <img src="./member_photos/IMG_1901.webp" width="1400" height="934" alt="セールスマネージャー Y.K." loading="lazy" decoding="async">
+            <img src="./member_photos/IMG_1901.webp" srcset="./member_photos/IMG_1901-600w.webp 600w, ./member_photos/IMG_1901-1200w.webp 1200w, ./member_photos/IMG_1901.webp 1400w" sizes="(max-width: 768px) 100vw, 50vw" width="1400" height="934" alt="セールスマネージャー Y.K." loading="lazy" decoding="async">
           </div>
           <div class="carousel-info">
             <span class="carousel-tag">SALES MANAGER</span>
@@ -3237,7 +3242,7 @@
         <!-- Slide 3 -->
         <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 / 3">
           <div class="carousel-img">
-            <img src="./member_photos/B.webp" width="1400" height="934" alt="ディレクター Y.O." loading="lazy" decoding="async">
+            <img src="./member_photos/B.webp" srcset="./member_photos/B-600w.webp 600w, ./member_photos/B-1200w.webp 1200w, ./member_photos/B.webp 1400w" sizes="(max-width: 768px) 100vw, 50vw" width="1400" height="934" alt="ディレクター Y.O." loading="lazy" decoding="async">
           </div>
           <div class="carousel-info">
             <span class="carousel-tag">DIRECTOR</span>
@@ -3284,7 +3289,7 @@
     <div class="container reveal">
       <div class="ceo-inner">
         <div class="ceo-photo-wrap">
-          <img src="./ceo_photo/IMG_2072.webp" width="1400" height="934" alt="代表取締役 中野" loading="lazy">
+          <img src="./ceo_photo/IMG_2072.webp" srcset="./ceo_photo/IMG_2072-600w.webp 600w, ./ceo_photo/IMG_2072-1200w.webp 1200w, ./ceo_photo/IMG_2072.webp 1400w" sizes="(max-width: 768px) 100vw, 40vw" width="1400" height="934" alt="代表取締役 中野" loading="lazy">
         </div>
         <div class="ceo-content">
           <span class="ceo-tag">President's Message</span>
