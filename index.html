@@ -221,6 +221,73 @@
       }
     }
 
+    /* --- Mobile Sticky Bottom CTA (CRO: always-on-hand entry) --- */
+    .mobile-sticky-cta {
+      display: none; /* desktop: hidden */
+    }
+    @media (max-width: 768px) {
+      .mobile-sticky-cta {
+        display: grid;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 998; /* below hamburger (1001) and modal (9999) */
+        grid-template-columns: 1fr 1.3fr;
+        gap: 8px;
+        padding: 10px 12px;
+        background: rgba(13, 13, 13, 0.96);
+        backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.35);
+        transform: translateY(0);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+      .mobile-sticky-cta.is-hidden {
+        transform: translateY(110%);
+        pointer-events: none;
+      }
+      .mobile-sticky-cta a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 14px 10px;
+        font-family: var(--font-en);
+        font-weight: 900;
+        font-size: 0.82rem;
+        letter-spacing: 0.15em;
+        text-decoration: none;
+        border-radius: 2px;
+        transition: transform 0.2s, background 0.2s;
+      }
+      .mobile-sticky-cta .msc-secondary {
+        background: transparent;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+      .mobile-sticky-cta .msc-primary {
+        background: var(--weby-red);
+        color: #fff;
+        box-shadow: 0 4px 14px rgba(192, 20, 60, 0.4);
+      }
+      .mobile-sticky-cta .msc-sub {
+        font-family: var(--font-serif);
+        font-weight: 400;
+        font-size: 0.65rem;
+        letter-spacing: 0.05em;
+        opacity: 0.9;
+        margin-left: 4px;
+      }
+      .mobile-sticky-cta a:active {
+        transform: translateY(1px);
+      }
+      /* Add bottom padding to body when sticky is visible, so footer content is not obscured */
+      body.has-sticky-cta {
+        padding-bottom: 72px;
+      }
+    }
+
     /* --- Post-Recruit CTA (CRO: highest-intent direct entry) --- */
     .recruit-cta {
       background: #0d0d0d;
@@ -3751,6 +3818,17 @@
     </div>
   </div>
 
+  <!-- Mobile Sticky CTA (CRO: always-on-hand entry) -->
+  <div class="mobile-sticky-cta" id="mobileStickyCta" role="region" aria-label="応募導線">
+    <a href="#recruit" class="msc-secondary">
+      募集要項
+    </a>
+    <a href="https://weby.app.n8n.cloud/form/325613fd-51ee-44e1-ae64-b751ae7623e2" target="_blank" rel="noopener noreferrer" class="msc-primary">
+      ENTRY
+      <span class="msc-sub">約3分</span>
+    </a>
+  </div>
+
   <script>
     lucide.createIcons();
 
@@ -4036,6 +4114,25 @@
         hamburger.focus();
       }
     });
+
+    // Mobile Sticky CTA — hide when post-recruit CTA or footer is visible (already has a CTA nearby)
+    const stickyCta = document.getElementById('mobileStickyCta');
+    if (stickyCta) {
+      const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
+      if (isMobile()) document.body.classList.add('has-sticky-cta');
+      const nearbyCtas = [
+        document.querySelector('.recruit-cta'),
+        document.querySelector('footer'),
+      ].filter(Boolean);
+      const io = new IntersectionObserver(entries => {
+        const anyNearby = entries.some(e => e.isIntersecting);
+        stickyCta.classList.toggle('is-hidden', anyNearby);
+      }, { rootMargin: '0px 0px -20% 0px', threshold: 0 });
+      nearbyCtas.forEach(el => io.observe(el));
+      window.addEventListener('resize', () => {
+        document.body.classList.toggle('has-sticky-cta', isMobile());
+      });
+    }
   </script>
 </body>
 
