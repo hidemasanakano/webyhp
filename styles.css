@@ -156,9 +156,9 @@
         right: 0;
         bottom: 0;
         z-index: 998; /* below hamburger (1001) and modal (9999) */
-        grid-template-columns: 1fr 1.3fr;
-        gap: 8px;
-        padding: 10px 12px;
+        grid-template-columns: 1fr 1fr 1.15fr;
+        gap: 6px;
+        padding: 10px 10px;
         background: rgba(13, 13, 13, 0.96);
         backdrop-filter: blur(12px);
         border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -174,20 +174,29 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 6px;
-        padding: 14px 10px;
+        gap: 5px;
+        padding: 12px 6px;
         font-family: var(--font-en);
         font-weight: 900;
-        font-size: 0.82rem;
-        letter-spacing: 0.15em;
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
         text-decoration: none;
         border-radius: 2px;
-        transition: transform 0.2s, background 0.2s;
+        transition: transform 0.2s, background 0.2s, color 0.2s;
       }
       .mobile-sticky-cta .msc-secondary {
         background: transparent;
         color: #fff;
         border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+      .mobile-sticky-cta .msc-intern {
+        background: transparent;
+        color: var(--weby-red);
+        border: 1px solid var(--weby-red);
+      }
+      .mobile-sticky-cta .msc-intern:active {
+        background: var(--weby-red);
+        color: #fff;
       }
       .mobile-sticky-cta .msc-primary {
         background: var(--weby-red);
@@ -197,10 +206,10 @@
       .mobile-sticky-cta .msc-sub {
         font-family: var(--font-serif);
         font-weight: 400;
-        font-size: 0.65rem;
-        letter-spacing: 0.05em;
-        opacity: 0.9;
-        margin-left: 4px;
+        font-size: 0.6rem;
+        letter-spacing: 0.03em;
+        opacity: 0.85;
+        margin-left: 3px;
       }
       .mobile-sticky-cta a:active {
         transform: translateY(1px);
