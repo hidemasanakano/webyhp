@@ -1268,6 +1268,142 @@
       }, { rootMargin: '0px 0px -20% 0px', threshold: 0 });
       hideTargets.forEach(el => sideIo.observe(el));
     }
+
+    // === Interactive polish (brand-aligned, subtle) ===
+    (() => {
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reducedMotion) return;
+
+      // 1. Hero-stat counter animation (0 -> target when scrolled into view)
+      const counterTargets = document.querySelectorAll('.hero-stat-value em');
+      const pureNumber = (s) => {
+        const m = s.match(/^(\d+)$/);
+        return m ? parseInt(m[1], 10) : null;
+      };
+      const runCounter = (el) => {
+        const target = pureNumber(el.textContent.trim());
+        if (target === null) return;
+        const duration = 1400;
+        const t0 = performance.now();
+        const step = (now) => {
+          const p = Math.min(1, (now - t0) / duration);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased);
+          if (p < 1) requestAnimationFrame(step);
+          else el.textContent = target;
+        };
+        requestAnimationFrame(step);
+      };
+      if (counterTargets.length) {
+        const cio = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) { runCounter(e.target); cio.unobserve(e.target); }
+          });
+        }, { threshold: 0.6 });
+        counterTargets.forEach(el => cio.observe(el));
+      }
+
+      // 2. Character-by-character fade-in for key headings
+      const charTargets = document.querySelectorAll(
+        '.m-copy, .why-text h2, .recruit-cta-heading'
+      );
+      // Kinsoku: characters that must NOT start a new line — attach to previous span
+      const kinsoku = /[、。！？」』）】〕〉》…ー〜\-,.!?)\]]/;
+      const wrapChars = (root) => {
+        const walk = (node) => {
+          [...node.childNodes].forEach(child => {
+            if (child.nodeType === 3) {
+              const frag = document.createDocumentFragment();
+              let lastSpan = null;
+              for (const ch of child.textContent) {
+                if (/\s/.test(ch)) {
+                  frag.appendChild(document.createTextNode(ch));
+                  lastSpan = null;
+                } else if (kinsoku.test(ch) && lastSpan) {
+                  lastSpan.textContent += ch;
+                } else {
+                  const sp = document.createElement('span');
+                  sp.className = 'char';
+                  sp.textContent = ch;
+                  frag.appendChild(sp);
+                  lastSpan = sp;
+                }
+              }
+              child.replaceWith(frag);
+            } else if (child.nodeType === 1 && child.tagName !== 'BR') {
+              walk(child);
+            }
+          });
+        };
+        walk(root);
+        root.querySelectorAll('.char').forEach((c, i) => {
+          c.style.transitionDelay = (i * 0.035) + 's';
+        });
+      };
+      charTargets.forEach(el => {
+        if (el.dataset.charWrapped) return;
+        el.dataset.charWrapped = '1';
+        wrapChars(el);
+      });
+      const tio = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('char-fade-in');
+            tio.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.25 });
+      charTargets.forEach(el => tio.observe(el));
+
+      // 3. Hero background parallax (subtle, only while hero is in viewport)
+      const heroBg = document.querySelector('.hero-bg');
+      if (heroBg) {
+        let ticking = false;
+        const update = () => {
+          const y = window.scrollY;
+          if (y < window.innerHeight) {
+            heroBg.style.transform = `translate3d(0, ${y * 0.25}px, 0)`;
+          }
+          ticking = false;
+        };
+        window.addEventListener('scroll', () => {
+          if (!ticking) { requestAnimationFrame(update); ticking = true; }
+        }, { passive: true });
+      }
+
+      // 4. Magnetic CTA (desktop-only, skip on touch devices)
+      const hasCoarsePointer = matchMedia('(pointer: coarse)').matches;
+      if (!hasCoarsePointer) {
+        const mags = document.querySelectorAll('.recruit-cta-btn, .nav-entry');
+        mags.forEach(el => {
+          const zone = 50; // px beyond button edges where pull starts
+          const strength = 0.25;
+          let raf = null;
+          const onMove = (e) => {
+            if (raf) cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(() => {
+              const r = el.getBoundingClientRect();
+              const cx = r.left + r.width / 2;
+              const cy = r.top + r.height / 2;
+              const dx = e.clientX - cx;
+              const dy = e.clientY - cy;
+              const reach = r.width / 2 + zone;
+              if (Math.abs(dx) < reach && Math.abs(dy) < r.height / 2 + zone) {
+                el.style.transform = `translate(${dx * strength}px, ${dy * strength}px)`;
+              } else {
+                el.style.transform = '';
+              }
+            });
+          };
+          const reset = () => {
+            if (raf) cancelAnimationFrame(raf);
+            el.style.transform = '';
+          };
+          document.addEventListener('mousemove', onMove);
+          el.addEventListener('mouseleave', reset);
+        });
+      }
+    })();
   </script>
 </body>
 
