@@ -172,10 +172,11 @@
       }
       .mobile-sticky-cta a {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 5px;
-        padding: 12px 6px;
+        gap: 2px;
+        padding: 10px 4px;
         font-family: var(--font-en);
         font-weight: 900;
         font-size: 0.72rem;
@@ -188,11 +189,14 @@
         background: transparent;
         color: #fff;
         border: 1px solid rgba(255, 255, 255, 0.4);
+        letter-spacing: 0.02em; /* Japanese text: tight */
       }
       .mobile-sticky-cta .msc-intern {
         background: transparent;
         color: var(--weby-red);
         border: 1px solid var(--weby-red);
+        letter-spacing: 0.02em; /* Japanese text: tight */
+        font-size: 0.7rem;
       }
       .mobile-sticky-cta .msc-intern:active {
         background: var(--weby-red);
@@ -206,10 +210,10 @@
       .mobile-sticky-cta .msc-sub {
         font-family: var(--font-serif);
         font-weight: 400;
-        font-size: 0.6rem;
-        letter-spacing: 0.03em;
+        font-size: 0.55rem;
+        letter-spacing: 0.02em;
         opacity: 0.85;
-        margin-left: 3px;
+        margin-left: 0;
       }
       .mobile-sticky-cta a:active {
         transform: translateY(1px);
