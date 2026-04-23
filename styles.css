@@ -237,7 +237,7 @@
       font-family: var(--font-en);
       font-size: 22vw;
       font-weight: 900;
-      color: rgba(255, 255, 255, 0.03);
+      color: rgba(255, 255, 255, 0.06);
       letter-spacing: -0.02em;
       pointer-events: none;
       white-space: nowrap;
@@ -745,7 +745,7 @@
       font-family: var(--font-en);
       font-size: 24vw;
       font-weight: 900;
-      color: rgba(255, 31, 75, 0.025);
+      color: rgba(255, 31, 75, 0.05);
       letter-spacing: -0.02em;
       pointer-events: none;
       white-space: nowrap;
@@ -1144,7 +1144,7 @@
       content: 'BUSINESS';
       left: -2%;
       font-size: 20vw;
-      color: rgba(0, 0, 0, 0.03);
+      color: rgba(0, 0, 0, 0.06);
     }
 
     .biz-categories {
@@ -2048,7 +2048,7 @@
       content: 'FAQ';
       left: -2%;
       font-size: 22vw;
-      color: rgba(255,255,255,0.03);
+      color: rgba(255, 255, 255, 0.06);
     }
 
     .faq-section .m-script {
@@ -2448,7 +2448,7 @@
       content: 'CEO';
       right: -20px;
       font-size: 18rem;
-      color: rgba(255,255,255,0.03);
+      color: rgba(255, 255, 255, 0.06);
     }
     .ceo-inner {
       display: grid;
