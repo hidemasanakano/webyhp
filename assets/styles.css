@@ -163,13 +163,9 @@
       will-change: transform;
     }
 
-    /* Hero parallax — GPU hint */
+    /* Hero parallax — GPU hint (motion pref handled at bottom of file) */
     .hero-bg {
       will-change: transform;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .char { opacity: 1; transform: none; transition: none; }
-      .hero-bg { transform: none !important; }
     }
 
     .container {
@@ -3739,19 +3735,45 @@
       border-radius: 50%;
     }
 
-    /* ============ Accessibility: Motion Preferences (#5) ============ */
+    /* ============ Accessibility ============ */
+
+    /* Focus-visible outlines for keyboard users (WCAG 2.4.7) */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible,
+    summary:focus-visible {
+      outline: 2px solid var(--weby-red);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+    /* On dark sections, flip to white outline for contrast */
+    .ceo-section :focus-visible,
+    .recruit-cta :focus-visible,
+    .faq-section :focus-visible,
+    footer#entry :focus-visible,
+    .mobile-sticky-cta :focus-visible,
+    .hero :focus-visible {
+      outline-color: #fff;
+    }
+    /* Skip mouse-click outlines (keyboard-only focus ring) */
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    /* Motion preferences (#5) — full coverage */
     @media (prefers-reduced-motion: reduce) {
-      .reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
       }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .char { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .hero-bg { transform: none !important; }
       .carousel-track { transition: none; }
       html { scroll-behavior: auto; }
     }

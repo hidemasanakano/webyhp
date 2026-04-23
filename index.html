@@ -86,7 +86,6 @@
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Noto+Serif+JP:wght@300;400;700;900&display=swap"
     rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest" defer></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 
@@ -247,13 +246,13 @@
           <div class="biz-cat-body">
             <div class="biz-service biz-highlight">
               <span class="biz-service-tag">FEATURED PLATFORM</span>
-              <span class="biz-service-name"><i class="fa-solid fa-users biz-service-icon"></i>専門家プロファイル</span>
+              <span class="biz-service-name"><i data-lucide="users" class="biz-service-icon"></i></i>専門家プロファイル</span>
               <span class="biz-service-url">profile.ne.jp</span>
               <p class="biz-service-desc">法律・お金・住まい・キャリア・健康など多様な分野の専門家とユーザーをつなぐ総合プラットフォーム。実績・口コミでブランディングし、ワンストップで相談できる安心感を提供。</p>
             </div>
             <div class="biz-service">
               <span class="biz-service-tag">PLATFORM</span>
-              <span class="biz-service-name"><i class="fa-solid fa-hand-holding-dollar biz-service-icon"></i>債務急済</span>
+              <span class="biz-service-name"><i data-lucide="hand-coins" class="biz-service-icon"></i></i>債務急済</span>
               <span class="biz-service-url">saimu931.jp</span>
               <p class="biz-service-desc">債務整理・借金問題を抱えるユーザーと専門家をつなぐポータル。士業の新たな集客チャネル。</p>
             </div>
@@ -270,12 +269,12 @@
           <div class="biz-cat-body">
             <div class="biz-service">
               <span class="biz-service-tag">SERVICE</span>
-              <span class="biz-service-name"><i class="fa-solid fa-globe biz-service-icon"></i>士業向けWebコンサルティング</span>
+              <span class="biz-service-name"><i data-lucide="globe" class="biz-service-icon"></i></i>士業向けWebコンサルティング</span>
               <p class="biz-service-desc">ホームページ・Google検索対策・ブランディング設計を通じ、広告に頼らない自走型の集客基盤を構築。専門チームが設計から運用まで一貫サポート。</p>
             </div>
             <div class="biz-service">
               <span class="biz-service-tag">SERVICE</span>
-              <span class="biz-service-name"><i class="fa-solid fa-map-location-dot biz-service-icon"></i>LMC（Local Map Consulting）</span>
+              <span class="biz-service-name"><i data-lucide="map-pin" class="biz-service-icon"></i></i>LMC（Local Map Consulting）</span>
               <p class="biz-service-desc">Googleマップ上での上位表示・口コミ管理・ビジネスプロフィール最適化により、地域の専門家事務所の集客を最大化。MEO＋HP流入で集客チャネルを多様化。</p>
             </div>
           </div>
@@ -432,12 +431,12 @@
               </div>
             </div>
             <div class="carousel-controls">
-              <button type="button" class="carousel-btn" aria-label="前のスライド" onclick="moveCarousel(-1)">←</button>
-              <button type="button" class="carousel-btn" aria-label="次のスライド" onclick="moveCarousel(1)">→</button>
+              <button type="button" class="carousel-btn" aria-label="前のスライド" data-action="carousel-prev">←</button>
+              <button type="button" class="carousel-btn" aria-label="次のスライド" data-action="carousel-next">→</button>
               <div class="carousel-dots" id="carouselDots">
-                <button class="carousel-dot active" type="button" aria-label="1 枚目にジャンプ" aria-current="true" onclick="goToSlide(0)"></button>
-                <button class="carousel-dot" type="button" aria-label="2 枚目にジャンプ" onclick="goToSlide(1)"></button>
-                <button class="carousel-dot" type="button" aria-label="3 枚目にジャンプ" onclick="goToSlide(2)"></button>
+                <button class="carousel-dot active" type="button" aria-label="1 枚目にジャンプ" aria-current="true" data-action="carousel-dot" data-slide="0"></button>
+                <button class="carousel-dot" type="button" aria-label="2 枚目にジャンプ" data-action="carousel-dot" data-slide="1"></button>
+                <button class="carousel-dot" type="button" aria-label="3 枚目にジャンプ" data-action="carousel-dot" data-slide="2"></button>
               </div>
             </div>
           </div>
@@ -474,12 +473,12 @@
               </div>
             </div>
             <div class="carousel-controls">
-              <button type="button" class="carousel-btn" aria-label="前のスライド" onclick="moveCarousel(-1)">←</button>
-              <button type="button" class="carousel-btn" aria-label="次のスライド" onclick="moveCarousel(1)">→</button>
+              <button type="button" class="carousel-btn" aria-label="前のスライド" data-action="carousel-prev">←</button>
+              <button type="button" class="carousel-btn" aria-label="次のスライド" data-action="carousel-next">→</button>
               <div class="carousel-dots" id="carouselDots2">
-                <button class="carousel-dot" type="button" aria-label="1 枚目にジャンプ" onclick="goToSlide(0)"></button>
-                <button class="carousel-dot active" type="button" aria-label="2 枚目にジャンプ" aria-current="true" onclick="goToSlide(1)"></button>
-                <button class="carousel-dot" type="button" aria-label="3 枚目にジャンプ" onclick="goToSlide(2)"></button>
+                <button class="carousel-dot" type="button" aria-label="1 枚目にジャンプ" data-action="carousel-dot" data-slide="0"></button>
+                <button class="carousel-dot active" type="button" aria-label="2 枚目にジャンプ" aria-current="true" data-action="carousel-dot" data-slide="1"></button>
+                <button class="carousel-dot" type="button" aria-label="3 枚目にジャンプ" data-action="carousel-dot" data-slide="2"></button>
               </div>
             </div>
           </div>
@@ -516,12 +515,12 @@
               </div>
             </div>
             <div class="carousel-controls">
-              <button type="button" class="carousel-btn" aria-label="前のスライド" onclick="moveCarousel(-1)">←</button>
-              <button type="button" class="carousel-btn" aria-label="次のスライド" onclick="moveCarousel(1)">→</button>
+              <button type="button" class="carousel-btn" aria-label="前のスライド" data-action="carousel-prev">←</button>
+              <button type="button" class="carousel-btn" aria-label="次のスライド" data-action="carousel-next">→</button>
               <div class="carousel-dots" id="carouselDots3">
-                <button class="carousel-dot" type="button" aria-label="1 枚目にジャンプ" onclick="goToSlide(0)"></button>
-                <button class="carousel-dot" type="button" aria-label="2 枚目にジャンプ" onclick="goToSlide(1)"></button>
-                <button class="carousel-dot active" type="button" aria-label="3 枚目にジャンプ" aria-current="true" onclick="goToSlide(2)"></button>
+                <button class="carousel-dot" type="button" aria-label="1 枚目にジャンプ" data-action="carousel-dot" data-slide="0"></button>
+                <button class="carousel-dot" type="button" aria-label="2 枚目にジャンプ" data-action="carousel-dot" data-slide="1"></button>
+                <button class="carousel-dot active" type="button" aria-label="3 枚目にジャンプ" aria-current="true" data-action="carousel-dot" data-slide="2"></button>
               </div>
             </div>
           </div>
@@ -852,7 +851,7 @@
         </a>
         <div class="social-row">
           <a href="https://note.com/weby" target="_blank" rel="noopener noreferrer" aria-label="公式 note">
-            <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+            <i data-lucide="pen-tool" aria-hidden="true"></i></i>
             <span>note</span>
           </a>
         </div>
@@ -874,16 +873,16 @@
   </footer>
 
   <!-- Lightbox (#10: ARIA) -->
-  <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="画像拡大表示" onclick="closeLightbox()">
-    <button type="button" class="lightbox-close" aria-label="閉じる" onclick="closeLightbox()">&times;</button>
+  <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="画像拡大表示" data-action="close-lightbox">
+    <button type="button" class="lightbox-close" aria-label="閉じる" data-action="close-lightbox">&times;</button>
     <img class="lightbox-img" id="lightbox-img" alt="">
     <div class="lightbox-caption" id="lightbox-caption"></div>
   </div>
 
   <!-- Worker Modal (#10: ARIA) -->
-  <div id="worker-modal" class="wmodal-overlay" role="dialog" aria-modal="true" aria-labelledby="wm-name" onclick="closeWorker()">
-    <div class="wmodal-box" onclick="event.stopPropagation()">
-      <button type="button" class="wmodal-close" aria-label="閉じる" onclick="closeWorker()">&times;</button>
+  <div id="worker-modal" class="wmodal-overlay" role="dialog" aria-modal="true" aria-labelledby="wm-name" data-action="close-worker">
+    <div class="wmodal-box" data-action="stop">
+      <button type="button" class="wmodal-close" aria-label="閉じる" data-action="close-worker">&times;</button>
       <div id="wmodal-content"></div>
     </div>
   </div>
@@ -917,6 +916,23 @@
     // lucide loads with defer — wait for DOMContentLoaded before invoking
     document.addEventListener('DOMContentLoaded', () => {
       if (typeof lucide !== 'undefined') lucide.createIcons();
+    });
+
+    // Event delegation for [data-action] — replaces inline onclick handlers.
+    // Functions (moveCarousel / goToSlide / closeLightbox / closeWorker) remain
+    // globally defined, so any downstream code referencing them keeps working.
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('[data-action]');
+      if (!trigger) return;
+      const action = trigger.dataset.action;
+      switch (action) {
+        case 'carousel-prev': moveCarousel(-1); break;
+        case 'carousel-next': moveCarousel(1); break;
+        case 'carousel-dot': goToSlide(Number(trigger.dataset.slide)); break;
+        case 'close-lightbox': closeLightbox(); break;
+        case 'close-worker': closeWorker(); break;
+        case 'stop': e.stopPropagation(); break;
+      }
     });
 
     const obs = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); }), { threshold: 0.1 });
