@@ -4,11 +4,7 @@ on:
   pull_request:
     paths:
       - 'index.html'
-      - 'photos/**'
-      - 'facility_photos/**'
-      - 'member_photos/**'
-      - 'trial_photos/**'
-      - 'ceo_photo/**'
+      - 'assets/**'
       - '.github/workflows/lighthouse.yml'
   push:
     branches: [main]
