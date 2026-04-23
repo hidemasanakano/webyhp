@@ -65,6 +65,96 @@
       opacity: 1;
     }
 
+    /* === Utility classes (atomic composition) === */
+    /* Colors */
+    .u-c-strong { color: var(--text-strong); }
+    .u-c-muted { color: var(--text-muted); }
+    .u-c-faint { color: var(--text-faint); }
+    .u-c-red { color: var(--weby-red); }
+    .u-c-white { color: #fff; }
+    /* Font weight */
+    .u-fw-700 { font-weight: 700; }
+    .u-fw-900 { font-weight: 900; }
+    /* Font size — mapped to design tokens where possible */
+    .u-fs-h3 { font-size: 1.8rem; }
+    .u-fs-h2 { font-size: var(--fs-h2); }          /* 3.2rem */
+    .u-fs-h2-md { font-size: 3.4rem; }
+    .u-fs-h2-lg { font-size: 3.6rem; }
+    .u-fs-h2-xl { font-size: var(--fs-h2-lg); }    /* 3.8rem */
+    .u-fs-display { font-size: 4rem; }
+    .u-fs-body-md { font-size: 0.95rem; }
+    .u-fs-body-sm { font-size: 0.82rem; }
+    /* Letter spacing */
+    .u-ls-wide { letter-spacing: 0.1em; }
+    .u-ls-ultra { letter-spacing: 0.3em; }
+    /* Line height */
+    .u-lh-relaxed { line-height: 1.9; }
+    /* Alignment / layout */
+    .u-ta-center { text-align: center; }
+    .u-rel { position: relative; }
+    .u-z-1 { z-index: 1; }
+    .u-fs-normal { font-style: normal; }
+    /* Spacing */
+    .u-mt-12 { margin-top: 12px; }
+    .u-mt-16 { margin-top: 16px; }
+    .u-mt-24 { margin-top: 24px; }
+    .u-mb-0 { margin-bottom: 0; }
+    .u-mb-60 { margin-bottom: 60px; }
+    .u-mb-70 { margin-bottom: 70px; }
+    .u-pt-24 { padding-top: 24px; }
+    /* Border */
+    .u-border-top { border-top: 1px solid var(--line-gray); }
+    /* Background */
+    .u-bg-dark { background: var(--dark-bg); }
+
+    /* Compound component: large PRE-ENTRY button in footer (distinct from .recruit-cta-btn) */
+    .entry-btn-large {
+      display: inline-block;
+      background: var(--weby-red);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      padding: 18px 56px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .entry-btn-large:hover { background: #d81442; }
+
+    /* Compound: entry button wrapper in footer (asymmetric padding) */
+    .entry-btn-wrap {
+      text-align: center;
+      padding: 48px 0 32px;
+    }
+
+    /* Compound: Build Trust lead (m-copy subline) */
+    .m-build-trust {
+      font-weight: 900;
+      color: var(--weby-red);
+      font-size: 1.8rem;
+      margin-bottom: 60px;
+      letter-spacing: 0.3em;
+    }
+
+    /* Compound: section intro wrapper (centered + z-index:1 + position:relative) */
+    .section-intro {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Compound: training note caveat paragraph */
+    .training-note {
+      font-size: 0.82rem;
+      color: var(--text-faint);
+      line-height: 1.9;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line-gray);
+    }
+
     /* Magnetic CTA — smooth transform transition (complements JS-driven translate) */
     .recruit-cta-btn,
     .nav-entry {
