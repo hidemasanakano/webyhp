@@ -1,9 +1,16 @@
     :root {
-      --weby-red: #C0143C;
+      --weby-red: #FF1F4B;
       --pure-black: #000000;
       --pure-white: #FFFFFF;
-      --text-gray: #555555;
-      --line-gray: #EEEEEE;
+      --dark-bg: #0d0d0d;
+      --text-strong: #111;
+      --text-default: #555;
+      --text-gray: #555;
+      --text-muted: #888;
+      --text-faint: #bbb;
+      --line-gray: #EEE;
+      --bg-muted: #FAFAFA;
+      --bg-card: #f9f9f9;
       --font-en: 'Montserrat', sans-serif;
       --font-serif: 'Noto Serif JP', serif;
       /* Font size tokens (#33) — new code should use these variables */
@@ -185,7 +192,7 @@
       .mobile-sticky-cta .msc-primary {
         background: var(--weby-red);
         color: #fff;
-        box-shadow: 0 4px 14px rgba(192, 20, 60, 0.4);
+        box-shadow: 0 4px 14px rgba(255, 31, 75, 0.4);
       }
       .mobile-sticky-cta .msc-sub {
         font-family: var(--font-serif);
@@ -280,12 +287,12 @@
       text-decoration: none;
       text-transform: uppercase;
       border-radius: 2px;
-      box-shadow: 0 8px 30px rgba(192, 20, 60, 0.35);
+      box-shadow: 0 8px 30px rgba(255, 31, 75, 0.35);
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .recruit-cta-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(192, 20, 60, 0.5);
+      box-shadow: 0 12px 40px rgba(255, 31, 75, 0.5);
     }
     .recruit-cta-arrow {
       transition: transform 0.3s;
@@ -385,7 +392,7 @@
     .hero {
       height: 100vh;
       height: 100dvh;
-      background: #000;
+      background: #0d0d0d;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -681,7 +688,7 @@
       align-items: center;
       gap: 6px;
       text-decoration: none;
-      color: #333;
+      color: #111;
       font-family: var(--font-en);
       font-size: 0.7rem;
       letter-spacing: 0.2em;
@@ -729,7 +736,7 @@
       font-family: var(--font-en);
       font-size: 24vw;
       font-weight: 900;
-      color: rgba(192, 20, 60, 0.025);
+      color: rgba(255, 31, 75, 0.025);
       letter-spacing: -0.02em;
       pointer-events: none;
       white-space: nowrap;
@@ -930,7 +937,7 @@
     .virtual-tour-sub {
       font-family: var(--font-serif);
       font-size: 0.85rem;
-      color: #666;
+      color: #555;
     }
     .virtual-tour-sub a {
       color: var(--weby-red);
@@ -1102,7 +1109,7 @@
 
     /* --- Business Section --- */
     .business-section {
-      background: #FBFBFA;
+      background: #FAFAFA;
       padding: 160px 0;
       position: relative;
       overflow: hidden;
@@ -1164,7 +1171,7 @@
       font-family: var(--font-en);
       font-size: 10rem;
       font-weight: 900;
-      color: rgba(192,20,60,0.12);
+      color: rgba(255, 31, 75,0.12);
       line-height: 1;
       pointer-events: none;
     }
@@ -1183,7 +1190,7 @@
       font-family: var(--font-en);
       font-size: 0.65rem;
       letter-spacing: 0.5em;
-      color: rgba(192,20,60,0.8);
+      color: rgba(255, 31, 75,0.8);
       display: block;
       margin-bottom: 16px;
     }
@@ -1196,7 +1203,7 @@
       line-height: 1;
       display: block;
       margin-bottom: 12px;
-      text-shadow: 0 0 40px rgba(192,20,60,0.4);
+      text-shadow: 0 0 40px rgba(255, 31, 75,0.4);
     }
 
     .biz-cat-top-title {
@@ -1209,7 +1216,7 @@
     .biz-cat-body {
       padding: 48px 48px 56px;
       flex: 1;
-      border: 1px solid #eee;
+      border: 1px solid #EEE;
       border-top: none;
       border-radius: 0 0 4px 4px;
     }
@@ -1223,7 +1230,7 @@
 
     .biz-service {
       padding: 24px 0;
-      border-bottom: 1px solid #f0f0f0;
+      border-bottom: 1px solid #EEE;
       position: relative;
       transition: 0.3s;
     }
@@ -1274,7 +1281,7 @@
 
     .biz-service-desc {
       font-size: 0.9rem;
-      color: #666;
+      color: #555;
       line-height: 1.9;
       margin-top: 6px;
     }
@@ -1320,7 +1327,7 @@
       border-bottom: 50px solid transparent;
       border-left: 20px solid #fff;
       z-index: 3;
-      filter: drop-shadow(2px 0 0 #eee);
+      filter: drop-shadow(2px 0 0 #EEE);
     }
 
     /* 矢印の赤アウトライン（影で見せる）*/
@@ -1333,13 +1340,13 @@
       height: 0;
       border-top: 50px solid transparent;
       border-bottom: 50px solid transparent;
-      border-left: 24px solid rgba(192,20,60,0.15);
+      border-left: 24px solid rgba(255, 31, 75,0.15);
       z-index: 2;
     }
 
     .training-flow-card {
       background: #fff;
-      border: 1px solid #eee;
+      border: 1px solid #EEE;
       border-right: none;
       padding: 32px 28px 32px 24px;
       height: 100%;
@@ -1356,11 +1363,11 @@
     }
 
     .training-flow-card:hover {
-      background: #fafafa;
+      background: #FAFAFA;
     }
 
     .training-flow-item:last-child .training-flow-card:hover {
-      background: #e01a42;
+      background: #FF1F4B;
     }
 
     .training-flow-phase {
@@ -1450,11 +1457,11 @@
       display: flex;
       gap: 20px;
       padding: 28px 0;
-      border-bottom: 1px solid #f0f0f0;
+      border-bottom: 1px solid #EEE;
     }
 
     .training-step:first-of-type {
-      border-top: 1px solid #f0f0f0;
+      border-top: 1px solid #EEE;
     }
 
     .training-step-num {
@@ -1477,7 +1484,7 @@
 
     .training-step-desc {
       font-size: 0.875rem;
-      color: #777;
+      color: #888;
       line-height: 1.8;
     }
 
@@ -1669,7 +1676,7 @@
       left: 50%;
       transform: translate(-50%, -50%) scale(0.8);
       z-index: 20;
-      background: rgba(192, 20, 60, 0.9);
+      background: rgba(255, 31, 75, 0.9);
       color: white;
       font-family: var(--font-en);
       font-size: 0.75rem;
@@ -1763,7 +1770,7 @@
     .carousel-quote {
       font-family: var(--font-serif);
       font-size: 1.3rem;
-      color: #444;
+      color: #555;
       line-height: 1.8;
       border-left: 3px solid var(--weby-red);
       padding-left: 20px;
@@ -1772,7 +1779,7 @@
 
     .carousel-detail {
       font-size: 0.95rem;
-      color: #666;
+      color: #555;
       line-height: 2.0;
     }
 
@@ -1786,7 +1793,7 @@
     .carousel-btn {
       width: 52px;
       height: 52px;
-      border: 1px solid #ddd;
+      border: 1px solid #EEE;
       background: white;
       cursor: pointer;
       font-size: 1.2rem;
@@ -1794,7 +1801,7 @@
       align-items: center;
       justify-content: center;
       transition: 0.3s;
-      color: #333;
+      color: #111;
     }
 
     .carousel-btn:hover {
@@ -1812,7 +1819,7 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #ddd;
+      background: #EEE;
       cursor: pointer;
       transition: 0.3s;
       /* #22: button element reset (was <div> before) */
@@ -1828,14 +1835,14 @@
     .career-timeline {
       margin-top: 40px;
       padding-top: 30px;
-      border-top: 1px solid #f0f0f0;
+      border-top: 1px solid #EEE;
     }
 
     .career-label {
       font-family: var(--font-en);
       font-size: 0.7rem;
       letter-spacing: 0.4em;
-      color: #aaa;
+      color: #bbb;
       margin-bottom: 20px;
       display: block;
     }
@@ -1877,7 +1884,7 @@
 
     .career-step-year {
       font-size: 0.72rem;
-      color: #999;
+      color: #888;
     }
 
     .career-step-body {
@@ -1886,16 +1893,9 @@
       padding: 12px 14px;
       margin-right: 20px;
       font-size: 0.82rem;
-      color: #444;
+      color: #555;
       line-height: 1.6;
       min-height: 60px;
-    }
-
-    /* --- FAQ (Graphical Q&A Recovered) --- */
-    .faq-section {
-      background: white;
-      padding: 160px 0;
-      border-top: 1px solid var(--line-gray);
     }
 
     /* --- Recruit Section (Recovered FULL INFO) --- */
@@ -1909,8 +1909,8 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 2px;
       margin-top: 60px;
-      background: #e8e8e8;
-      border: 2px solid #e8e8e8;
+      background: #EEE;
+      border: 2px solid #EEE;
       border-radius: 6px;
       overflow: hidden;
     }
@@ -1941,7 +1941,7 @@
       line-height: 1.9;
       font-size: 0.9rem;
       letter-spacing: 0.02em;
-      color: #333;
+      color: #111;
     }
 
     .r-h3 {
@@ -1951,7 +1951,7 @@
       padding-left: 25px;
       margin-bottom: 25px;
       display: block;
-      color: #000;
+      color: #111;
     }
 
     .r-p {
@@ -2024,7 +2024,7 @@
       background: var(--weby-red);
       color: white !important;
       border-radius: 4px;
-      box-shadow: 0 4px 15px rgba(192, 20, 60, 0.2);
+      box-shadow: 0 4px 15px rgba(255, 31, 75, 0.2);
     }
 
     /* --- FAQ Section --- */
@@ -2108,7 +2108,7 @@
     .faq-icon {
       width: 28px;
       height: 28px;
-      border: 1px solid rgba(192,20,60,0.5);
+      border: 1px solid rgba(255, 31, 75,0.5);
       border-radius: 50%;
       flex-shrink: 0;
       position: relative;
@@ -2197,7 +2197,7 @@
       font-family: var(--font-en);
       font-size: 0.75rem;
       letter-spacing: 0.6em;
-      color: #999;
+      color: #888;
       margin-bottom: 40px;
       display: block;
       text-align: center;
@@ -2299,7 +2299,7 @@
       border: none;
       font-size: 2rem;
       cursor: pointer;
-      color: #000;
+      color: #111;
       line-height: 1;
     }
 
@@ -2349,7 +2349,7 @@
       font-size: 0.8rem;
       letter-spacing: 0.5em;
       font-weight: 900;
-      color: #999;
+      color: #888;
       margin-bottom: 30px;
     }
 
@@ -2363,7 +2363,7 @@
       display: flex;
       gap: 30px;
       padding: 18px 0;
-      border-bottom: 1px solid #f0f0f0;
+      border-bottom: 1px solid #EEE;
       align-items: center;
     }
 
@@ -2377,13 +2377,13 @@
 
     .wm-task {
       font-size: 1.05rem;
-      color: #333;
+      color: #111;
     }
 
     .wm-reward {
       font-size: 1.1rem;
       line-height: 2.2;
-      color: #444;
+      color: #555;
     }
 
     /* --- Budo Animation --- */
@@ -2414,7 +2414,7 @@
       }
 
       30% {
-        -webkit-text-stroke: 1px rgba(192, 20, 60, 0.15);
+        -webkit-text-stroke: 1px rgba(255, 31, 75, 0.15);
       }
 
       100% {
@@ -2430,7 +2430,7 @@
 
     /* CEO Message Section */
     .ceo-section {
-      background: #0a0a0a;
+      background: #0d0d0d;
       padding: 120px 0;
       position: relative;
       overflow: hidden;
@@ -2507,7 +2507,7 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 0.7rem;
       letter-spacing: 0.2em;
-      color: #666;
+      color: #555;
       margin-bottom: 6px;
     }
     .ceo-name-jp {
@@ -2538,7 +2538,7 @@
       transition: 0.3s;
     }
     header.scrolled .hamburger span {
-      background: #000;
+      background: #111;
     }
     .hamburger.active span:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
@@ -2941,7 +2941,7 @@
       }
 
       .training-flow-card {
-        border-right: 1px solid #eee;
+        border-right: 1px solid #EEE;
         min-height: auto;
         padding: 18px 18px;
       }
