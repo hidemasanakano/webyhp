@@ -54,6 +54,34 @@
       transform: translateY(0);
     }
 
+    /* Character-by-character fade-in (brand: 文字が1文字ずつ滲み出る).
+       Use display: inline + opacity-only so Japanese line-break / kinsoku rules apply naturally. */
+    .char {
+      opacity: 0;
+      transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+      will-change: opacity;
+    }
+    .char-fade-in .char {
+      opacity: 1;
+    }
+
+    /* Magnetic CTA — smooth transform transition (complements JS-driven translate) */
+    .recruit-cta-btn,
+    .nav-entry {
+      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+                  background 0.3s, color 0.3s, box-shadow 0.3s;
+      will-change: transform;
+    }
+
+    /* Hero parallax — GPU hint */
+    .hero-bg {
+      will-change: transform;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .char { opacity: 1; transform: none; transition: none; }
+      .hero-bg { transform: none !important; }
+    }
+
     .container {
       max-width: 1260px;
       margin: 0 auto;
@@ -248,7 +276,7 @@
       line-height: 1;
     }
     .recruit-cta-inner {
-      max-width: 760px;
+      max-width: 840px;
       margin: 0 auto;
       padding: 0 24px;
       position: relative;
