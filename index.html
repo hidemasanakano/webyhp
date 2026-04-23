@@ -662,7 +662,7 @@
         </div>
         <div class="r-row r-wide">
           <div class="r-label">業務内容</div>
-          <div class="r-data">【営業職】顧客リサーチ・アプローチ・商談・Webコンサルティング提案・契約締結　【コンサルタント】定例MTG・改善提案・データ分析・マーケ施策立案・運用支援　【管理職】チームMG・育成・KPI管理・組織運営</div>
+          <div class="r-data">【営業職】顧客リサーチ・アプローチ・商談・Webコンサルティング提案・契約締結<br>【コンサルタント】定例MTG・改善提案・データ分析・マーケ施策立案・運用支援<br>【管理職】チームMG・育成・KPI管理・組織運営</div>
         </div>
         <div class="r-row r-wide">
           <div class="r-label">選考フロー</div>
@@ -1300,6 +1300,7 @@
     (() => {
       const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (reducedMotion) return;
+      const hasCoarsePointer = matchMedia('(pointer: coarse)').matches;
 
       // 1. Hero-stat counter animation (0 -> target when scrolled into view)
       const counterTargets = document.querySelectorAll('.hero-stat-value em');
@@ -1322,12 +1323,19 @@
         requestAnimationFrame(step);
       };
       if (counterTargets.length) {
+        // rootMargin shrinks the effective intersection root so the element
+        // must be clearly inside the viewport (not just grazing the edge).
+        // This avoids false triggers when mobile address bars auto-hide
+        // and cause brief viewport shifts at initial load.
         const cio = new IntersectionObserver((entries) => {
           entries.forEach(e => {
             if (e.isIntersecting) { runCounter(e.target); cio.unobserve(e.target); }
           });
-        }, { threshold: 0.6 });
-        counterTargets.forEach(el => cio.observe(el));
+        }, { threshold: 0, rootMargin: '0px 0px -35% 0px' });
+        // Delay attaching the observer until after the viewport settles.
+        const attach = () => counterTargets.forEach(el => cio.observe(el));
+        if (document.readyState === 'complete') setTimeout(attach, 600);
+        else window.addEventListener('load', () => setTimeout(attach, 600), { once: true });
       }
 
       // 2. Character-by-character fade-in for key headings
@@ -1382,9 +1390,12 @@
       }, { threshold: 0.25 });
       charTargets.forEach(el => tio.observe(el));
 
-      // 3. Hero background parallax (subtle, only while hero is in viewport)
+      // 3. Hero background parallax — desktop only.
+      // On mobile, address-bar auto-hide causes viewport height to shift
+      // during scroll, which produces visible stutter. Also mobile users
+      // get less value from parallax (short hero, quick scroll past).
       const heroBg = document.querySelector('.hero-bg');
-      if (heroBg) {
+      if (heroBg && !hasCoarsePointer) {
         let ticking = false;
         const update = () => {
           const y = window.scrollY;
@@ -1399,7 +1410,6 @@
       }
 
       // 4. Magnetic CTA (desktop-only, skip on touch devices)
-      const hasCoarsePointer = matchMedia('(pointer: coarse)').matches;
       if (!hasCoarsePointer) {
         const mags = document.querySelectorAll('.recruit-cta-btn, .nav-entry');
         mags.forEach(el => {
