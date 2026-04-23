@@ -6,15 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>株式会社WEBY 　27年　新卒採用サイト | THE RED EDGE</title>
   <meta name="description" content="株式会社WEBYの新卒採用サイトです。専門家プロファイル・法務救済・債務急済などのメディア事業と、士業向けWebコンサルティング事業を展開。2027年卒の採用情報はこちら。">
-  <meta name="keywords" content="株式会社WEBY,WEBY,新卒採用,採用,2027年卒,新卒,就職,銀座,Webコンサルティング,専門家プロファイル">
+  <link rel="canonical" href="https://weby.co.jp/newgrad/">
+  <meta name="theme-color" content="#0d0d0d">
+  <link rel="icon" type="image/png" href="./assets/photos/logo-transparent.png">
+  <link rel="apple-touch-icon" href="./assets/photos/logo-transparent.png">
   <!-- OGP (#38) -->
   <meta property="og:title" content="株式会社WEBY 新卒採用サイト | THE RED EDGE">
   <meta property="og:description" content="「今日よりも明日、大きな社会課題を解決する。」株式会社WEBYの2027年卒新卒採用情報。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://weby-inc.com/recruit/">
+  <meta property="og:url" content="https://weby.co.jp/newgrad/">
   <meta property="og:site_name" content="株式会社WEBY">
   <meta property="og:locale" content="ja_JP">
-  <meta property="og:image" content="https://weby-inc.com/assets/photos/mainbanner.webp">
+  <meta property="og:image" content="https://weby.co.jp/newgrad/assets/photos/mainbanner.webp">
   <meta property="og:image:width" content="1920">
   <meta property="og:image:height" content="1080">
   <meta property="og:image:alt" content="株式会社WEBY 新卒採用 - THE RED EDGE">
@@ -22,7 +25,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="株式会社WEBY 新卒採用サイト">
   <meta name="twitter:description" content="今日よりも明日、大きな社会課題を解決する。2027年卒 新卒採用情報。">
-  <meta name="twitter:image" content="https://weby-inc.com/assets/photos/mainbanner.webp">
+  <meta name="twitter:image" content="https://weby.co.jp/newgrad/assets/photos/mainbanner.webp">
   <meta name="twitter:image:alt" content="株式会社WEBY 新卒採用 - THE RED EDGE">
   <!-- JSON-LD JobPosting (#36) -->
   <script type="application/ld+json">
@@ -38,8 +41,8 @@
     "hiringOrganization": {
       "@type": "Organization",
       "name": "株式会社WEBY",
-      "sameAs": "https://weby-inc.com",
-      "logo": "https://weby-inc.com/assets/photos/logo.png"
+      "sameAs": "https://weby.co.jp",
+      "logo": "https://weby.co.jp/newgrad/assets/photos/logo.png"
     },
     "jobLocation": {
       "@type": "Place",
@@ -82,7 +85,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Noto+Serif+JP:wght@300;400;700;900&display=swap"
     rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@latest" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
@@ -90,7 +93,7 @@
 <body>
   <header id="header" class="top-transparent">
     <div class="logo"><img src="./assets/photos/logo-transparent.png" width="460" height="272" alt="WEBY"></div>
-    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+    <button type="button" class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
       <span></span>
       <span></span>
       <span></span>
@@ -431,8 +434,8 @@
               </div>
             </div>
             <div class="carousel-controls">
-              <button class="carousel-btn" aria-label="前のスライド" onclick="moveCarousel(-1)">←</button>
-              <button class="carousel-btn" aria-label="次のスライド" onclick="moveCarousel(1)">→</button>
+              <button type="button" class="carousel-btn" aria-label="前のスライド" onclick="moveCarousel(-1)">←</button>
+              <button type="button" class="carousel-btn" aria-label="次のスライド" onclick="moveCarousel(1)">→</button>
               <div class="carousel-dots" id="carouselDots">
                 <button class="carousel-dot active" type="button" aria-label="1 枚目にジャンプ" aria-current="true" onclick="goToSlide(0)"></button>
                 <button class="carousel-dot" type="button" aria-label="2 枚目にジャンプ" onclick="goToSlide(1)"></button>
@@ -473,8 +476,8 @@
               </div>
             </div>
             <div class="carousel-controls">
-              <button class="carousel-btn" aria-label="前のスライド" onclick="moveCarousel(-1)">←</button>
-              <button class="carousel-btn" aria-label="次のスライド" onclick="moveCarousel(1)">→</button>
+              <button type="button" class="carousel-btn" aria-label="前のスライド" onclick="moveCarousel(-1)">←</button>
+              <button type="button" class="carousel-btn" aria-label="次のスライド" onclick="moveCarousel(1)">→</button>
               <div class="carousel-dots" id="carouselDots2">
                 <button class="carousel-dot" type="button" aria-label="1 枚目にジャンプ" onclick="goToSlide(0)"></button>
                 <button class="carousel-dot active" type="button" aria-label="2 枚目にジャンプ" aria-current="true" onclick="goToSlide(1)"></button>
@@ -515,8 +518,8 @@
               </div>
             </div>
             <div class="carousel-controls">
-              <button class="carousel-btn" aria-label="前のスライド" onclick="moveCarousel(-1)">←</button>
-              <button class="carousel-btn" aria-label="次のスライド" onclick="moveCarousel(1)">→</button>
+              <button type="button" class="carousel-btn" aria-label="前のスライド" onclick="moveCarousel(-1)">←</button>
+              <button type="button" class="carousel-btn" aria-label="次のスライド" onclick="moveCarousel(1)">→</button>
               <div class="carousel-dots" id="carouselDots3">
                 <button class="carousel-dot" type="button" aria-label="1 枚目にジャンプ" onclick="goToSlide(0)"></button>
                 <button class="carousel-dot" type="button" aria-label="2 枚目にジャンプ" onclick="goToSlide(1)"></button>
@@ -874,7 +877,7 @@
 
   <!-- Lightbox (#10: ARIA) -->
   <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="画像拡大表示" onclick="closeLightbox()">
-    <button class="lightbox-close" aria-label="閉じる" onclick="closeLightbox()">&times;</button>
+    <button type="button" class="lightbox-close" aria-label="閉じる" onclick="closeLightbox()">&times;</button>
     <img class="lightbox-img" id="lightbox-img" alt="">
     <div class="lightbox-caption" id="lightbox-caption"></div>
   </div>
@@ -882,7 +885,7 @@
   <!-- Worker Modal (#10: ARIA) -->
   <div id="worker-modal" class="wmodal-overlay" role="dialog" aria-modal="true" aria-labelledby="wm-name" onclick="closeWorker()">
     <div class="wmodal-box" onclick="event.stopPropagation()">
-      <button class="wmodal-close" aria-label="閉じる" onclick="closeWorker()">&times;</button>
+      <button type="button" class="wmodal-close" aria-label="閉じる" onclick="closeWorker()">&times;</button>
       <div id="wmodal-content"></div>
     </div>
   </div>
@@ -913,7 +916,10 @@
   </a>
 
   <script>
-    lucide.createIcons();
+    // lucide loads with defer — wait for DOMContentLoaded before invoking
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    });
 
     const obs = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); }), { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(e => obs.observe(e));
