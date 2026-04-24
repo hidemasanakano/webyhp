@@ -863,11 +863,20 @@
       font-family: var(--font-en);
       font-size: 24vw;
       font-weight: 900;
-      color: rgba(255, 31, 75, 0.05);
       letter-spacing: -0.02em;
       pointer-events: none;
       white-space: nowrap;
       line-height: 1;
+      /* Halftone/dot fill — letter shape composed of fine dots.
+         Applies on all viewports; tuned fainter + higher density
+         + smaller dot radius for subtle texture. */
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      background-image: radial-gradient(circle, rgba(255, 31, 75, 0.45) 20%, transparent 22%);
+      background-size: 5px 5px;
+      background-repeat: repeat;
+      -webkit-background-clip: text;
+      background-clip: text;
     }
     .why-inner {
       display: grid;
@@ -2990,17 +2999,7 @@
       .why-we-exist::before {
         font-size: 46vw;
         right: -12%;
-        /* Halftone/dot-fill: letter shape filled with a grid of
-           small red dots instead of solid color. Keeps the glyph
-           silhouette while softening the visual weight so the
-           background doesn't feel too assertive on small screens. */
-        color: transparent;
-        -webkit-text-fill-color: transparent;
-        background-image: radial-gradient(circle, rgba(255, 31, 75, 0.7) 18%, transparent 22%);
-        background-size: 9px 9px;
-        background-repeat: repeat;
-        -webkit-background-clip: text;
-        background-clip: text;
+        /* Dot-fill inherits from base; only size/position changes on mobile */
       }
       .business-section::before {
         font-size: 42vw;
