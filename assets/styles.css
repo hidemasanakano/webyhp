@@ -872,8 +872,8 @@
          + smaller dot radius for subtle texture. */
       color: transparent;
       -webkit-text-fill-color: transparent;
-      background-image: radial-gradient(circle, rgba(255, 31, 75, 0.45) 20%, transparent 22%);
-      background-size: 5px 5px;
+      background-image: radial-gradient(circle, rgba(255, 31, 75, 0.30) 18%, transparent 20%);
+      background-size: 3px 3px;
       background-repeat: repeat;
       -webkit-background-clip: text;
       background-clip: text;
