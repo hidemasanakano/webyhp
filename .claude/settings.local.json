@@ -1,11 +1,47 @@
 {
   "permissions": {
     "allow": [
-      "Bash(curl -s https://api.github.com/repos/revfactory/harness/contents)",
-      "Bash(python3 -c \"import sys,json; [print\\(f['name']\\) for f in json.load\\(sys.stdin\\)]\")",
-      "Bash(curl -s \"https://api.github.com/repos/revfactory/harness/contents/.claude-plugin/plugin.json\")",
-      "Bash(python3 -c \"import sys,json,base64; d=json.load\\(sys.stdin\\); print\\(base64.b64decode\\(d['content']\\).decode\\(\\)\\)\")",
-      "Bash(python3)"
+      "Read",
+      "Grep",
+      "Glob",
+      "WebSearch",
+      "WebFetch",
+      "Edit",
+      "Write",
+      "ScheduleWakeup",
+      "TaskCreate",
+      "TaskUpdate",
+      "TaskList",
+      "TaskGet",
+      "ToolSearch",
+      "Skill",
+      "Bash"
+    ],
+    "deny": [
+      "Bash(rm -rf /*)",
+      "Bash(rm -rf ~/*)",
+      "Bash(rm -rf ~)",
+      "Bash(git push --force*)",
+      "Bash(git push -f*)",
+      "Bash(git reset --hard origin/*)",
+      "Bash(git checkout main)",
+      "Bash(sudo*)",
+      "Bash(rm -rf /etc/*)",
+      "Bash(rm -rf /var/*)",
+      "Bash(rm -rf /System/*)",
+      "Bash(rm -rf /Applications/*)",
+      "Bash(rm -rf /usr/*)",
+      "Bash(rm /etc/*)",
+      "Bash(rm /var/*)",
+      "Bash(mv /etc/*)",
+      "Bash(mv /var/*)",
+      "Bash(mv /System/*)",
+      "Bash(rm -rf ~/Documents/*)",
+      "Bash(rm -rf ~/Downloads/*)",
+      "Bash(rm -rf ~/Library/*)",
+      "Bash(mv ~/Documents/*)",
+      "Bash(mv ~/Library/*)"
     ]
-  }
+  },
+  "comment": "緩い allow + cursor 外 destructive ブロック (2026-04-23 更新)。backup は settings.local.json.backup-2026-04-22-night に保持。"
 }
