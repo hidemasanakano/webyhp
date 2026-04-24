@@ -2984,9 +2984,27 @@
         object-position: center 20%;
       }
 
+      /* Mobile ghost-typography: 2x up-sized for impact + opacity
+         bumped on light-bg sections (red/black on white needs more
+         contrast than white on black). */
+      .why-we-exist::before {
+        font-size: 46vw;
+        right: -12%;
+        color: rgba(255, 31, 75, 0.10);   /* was 0.05 */
+      }
+      .business-section::before {
+        font-size: 42vw;
+        color: rgba(0, 0, 0, 0.09);        /* was 0.06 */
+      }
+      .recruit-cta::before {
+        font-size: 38vw;
+      }
+      .faq-section::before {
+        font-size: 42vw;
+      }
       .ceo-section::before {
-        font-size: 6rem;
-        right: -10px;
+        font-size: 42vw;
+        right: -10%;
       }
 
       .ceo-title {
