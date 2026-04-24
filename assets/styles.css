@@ -2045,8 +2045,8 @@
     .r-row {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      padding: 28px 32px;
+      gap: 4px;
+      padding: 18px 22px;
       background: #fff;
       align-items: flex-start;
     }
@@ -2060,13 +2060,13 @@
       color: var(--weby-red);
       font-family: var(--font-jp);
       letter-spacing: 0.05em;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       display: block;
     }
 
     .r-data {
-      line-height: 1.9;
-      font-size: 0.9rem;
+      line-height: 1.7;
+      font-size: 0.88rem;
       letter-spacing: 0.02em;
       color: #111;
     }
@@ -3298,7 +3298,7 @@
 
       .recruit-wrap {
         grid-template-columns: 1fr;
-        margin-top: 28px;
+        margin-top: 24px;
       }
 
       .r-row.r-wide {
@@ -3306,16 +3306,17 @@
       }
 
       .r-row {
-        padding: 16px;
+        padding: 12px 14px;
+        gap: 3px;
       }
 
       .r-label {
-        font-size: 0.7rem;
+        font-size: 0.68rem;
       }
 
       .r-data {
-        font-size: 0.78rem;
-        line-height: 1.75;
+        font-size: 0.76rem;
+        line-height: 1.55;
       }
 
       /* --- FAQ Section --- */
